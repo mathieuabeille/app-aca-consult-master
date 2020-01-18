@@ -1,0 +1,21 @@
+
+<div class="table"><br/>
+<center><%= link_to 'Ajouter un employé', new_employee_path, class: 'btn-medium' %><br/><br/></center>
+
+  <% @employees.each do |emp| %>
+  <div class="table-row">
+    <%= emp.nom %>
+    <%= emp.prenom %>
+    <%= link_to ' Modifier employée', edit_employee_path(emp), class: 'btn btn-medium btn-lg pull-right margin' %>
+    <%= link_to ' Nouveau contrat Exta',  new_employee_contrat_path(emp), class: 'btn btn-medium btn-lg pull-right margin'   %>
+    <%= link_to ' Nouveau contrat CDD Saisonnier',  new_employee_contratcdd_path(emp), class: 'btn btn-medium btn-lg pull-right margin'   %>
+    <%= link_to ' Supprimer employée',  employee_path(emp), method: :delete, class: 'btn btn-medium btn-lg pull-right margin',  data: { confirm: 'Confirmation' }   %>
+
+
+</div>
+  <% end %>
+
+
+</div>
+
+

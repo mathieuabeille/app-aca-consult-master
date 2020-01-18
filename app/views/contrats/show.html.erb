@@ -1,0 +1,80 @@
+
+<div class="logbox">
+<center><h3>Récapitulatif du contrat</h3>
+
+
+
+
+
+<p>
+
+  <%= @contrat.employee.nom %>
+  <%= @contrat.employee.prenom %>, <i>
+  <%= @contrat.employee.adresse %></i>
+</p>
+
+<p>  Pour un poste de <b> <%= @contrat.nomposte %></b><br/> <b>
+
+      <% nombreheure = 0 %>
+    <% nombreheure = (@contrat.jour1fin - @contrat.jour1debut) if @contrat.jour1 == true %>
+    <% nombreheure += (@contrat.jour2fin - @contrat.jour2debut) if @contrat.jour2 == true %>
+    <% nombreheure += (@contrat.jour3fin - @contrat.jour3debut) if @contrat.jour3 == true %>
+    <% nombreheure += (@contrat.jour4fin - @contrat.jour4debut) if @contrat.jour4 == true %>
+    <% nombreheure += (@contrat.jour5fin - @contrat.jour5debut) if @contrat.jour5 == true %>
+    <% nombreheure += (@contrat.jour6fin - @contrat.jour6debut) if @contrat.jour6 == true %>
+    <% nombreheure += (@contrat.jour7fin - @contrat.jour7debut) if @contrat.jour7 == true %>
+    <%= nombreheure/3600 %>
+
+
+
+    </b>
+
+     heures remunérées <b><%= @contrat.remuneration*nombreheure/3600 %></b> Euros (<%= @contrat.remuneration %> par heure)
+</p>
+
+
+
+  Du
+  <b><%= @contrat.jour1debut.strftime('%d/%m/%Y')
+     %></b>
+
+  au
+  <b>
+    <% if @contrat.jour1 == false %>
+  Vous avez mal rempli le formulaire d'horaire !</b>
+  <% elsif @contrat.jour1 == true && @contrat.jour2 == false %>
+    <%= @contrat.jour1debut.strftime('%d/%m/%Y') %>
+  <% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == false %>
+  <%= @contrat.jour2debut.strftime('%d/%m/%Y') %>
+  <% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == false %>
+  <%= @contrat.jour3debut.strftime('%d/%m/%Y') %>
+  <% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour4 == true && @contrat.jour4 == true && @contrat.jour5 == false %>
+  <%= @contrat.jour4debut.strftime('%d/%m/%Y') %>
+  <% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == true && @contrat.jour5 == true && @contrat.jour6 == false %>
+  <%= @contrat.jour5debut.strftime('%d/%m/%Y') %>
+  <% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == true && @contrat.jour5 == true && @contrat.jour6 == true && @contrat.jour7 == false %>
+  <%= @contrat.jour6debut.strftime('%d/%m/%Y') %>
+  <% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == true && @contrat.jour5 == true && @contrat.jour6 == true && @contrat.jour7 == true %>
+  <%= @contrat.jour7debut.strftime('%d/%m/%Y') %>
+  <% else %>
+  Vérifiez les jours que vous avez coché dans le formulaire de planning! Une erreur est survenue.
+  <% end %></b>
+</p>
+
+
+<h5>Services :</h5>
+<% if @contrat.jour1 == true %> <p>Le <b><%= @contrat.jour1debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour1debut.strftime('%HH%M') %> à <%= @contrat.jour1fin.strftime('%HH%M') %> </p> <% end %>
+<% if @contrat.jour2 == true %> <p>Le <b><%= @contrat.jour2debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour2debut.strftime('%HH%M') %> à <%= @contrat.jour2fin.strftime('%HH%M') %> </p> <% end %>
+<% if @contrat.jour3 == true %> <p>Le <b><%= @contrat.jour3debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour3debut.strftime('%HH%M') %> à <%= @contrat.jour3fin.strftime('%HH%M') %> </p> <% end %>
+<% if @contrat.jour4 == true %> <p>Le <b><%= @contrat.jour4debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour4debut.strftime('%HH%M') %> à <%= @contrat.jour4fin.strftime('%HH%M') %> </p> <% end %>
+<% if @contrat.jour5 == true %> <p>Le <b><%= @contrat.jour5debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour5debut.strftime('%HH%M') %> à <%= @contrat.jour5fin.strftime('%HH%M') %> </p> <% end %>
+<% if @contrat.jour6 == true %> <p>Le <b><%= @contrat.jour6debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour6debut.strftime('%HH%M') %> à <%= @contrat.jour6fin.strftime('%HH%M') %> </p> <% end %>
+<% if @contrat.jour7 == true %> <p>Le <b><%= @contrat.jour7debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour7debut.strftime('%HH%M') %> à <%= @contrat.jour7fin.strftime('%HH%M') %> </p> <% end %>
+<br/>
+
+
+</center>
+<center><%= link_to "Générer le contrat", contrat_path(@contrat, format: 'pdf'), class: 'btn btn-medium btn-lg' %></center>
+<br/><br/>
+
+</div>

@@ -1,0 +1,435 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <%= wicked_pdf_stylesheet_link_tag  'contrats' %>
+
+</head>
+<body>
+
+<style media="screen" type="text/css">
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+li {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  padding-left: 100px;
+  line-height: 150%;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+b{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+
+}
+h4{
+      margin: 0px;
+      padding-top: 10px;
+      line-height: 30%;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+
+i{
+    line-height: 30%;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+
+.head {
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 10px;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.bar {
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-top: 5px;
+
+  p {
+    padding-top: 5px;
+  }
+
+}
+
+.societe{
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.representant{
+  padding-left: 20px;
+  padding-top: 5px;
+
+}
+
+.partie {
+  padding-left: 450px;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.alinea {
+  padding-left: 20px;
+}
+
+
+</style>
+
+<div class="head">
+    <h1>Contrat de travail à durée déterminée d’usage
+    extra de la restauration</h1>
+    <% if @contratcdd.debut == true %>
+    à effet du <b><%= @contratcdd.debut.strftime('%d/%m/%Y')
+   %></b>
+    <% end %>
+  </div>
+<br/>
+  <div class="bar">
+    <b>Entre les soussignés </b>
+  </div>
+
+  <div class="societe">
+    <% if @contratcdd.user.nomentreprise.present? %>
+    <h4> <%= @contratcdd.user.nomentreprise %></h4>
+    <% end %>
+    <p>
+      <% if @contratcdd.user.formejuridique.present? %>
+       <%= @contratcdd.user.formejuridique %>
+      <% end %>
+      <% if @contratcdd.user.numerosiret.present? %>
+      immatriculée sous le numéro SIRET <%= @contratcdd.user.numerosiret %>
+      <% end %><br/>
+    <% if @contratcdd.user.numerocnaf.present? %>
+    Code NAF: <%= @contratcdd.user.numerocnaf %>
+    <% end %><br/>
+    <% if @contratcdd.user.adresseentreprise.present? %>
+    Dont le siège social est situé : <%= @contratcdd.user.adresseentreprise %>
+    <% end %>
+
+    <% if @contratcdd.user.formejuridique == "Société en nom propre" && @contratcdd.user.formejuridique.present? %>
+<!--     Rien afficher -->
+    <% else %>
+    <br/>Agissant par l'intermédiaire de son représentant légal :
+      <% if @contratcdd.user.sexerepresentant == "Masculin" || @contratcdd.user.sexerepresentant == "Male" || @contratcdd.user.sexerepresentant == "Homme" || @contratcdd.user.sexerepresentant == "masculin" || @contratcdd.user.sexerepresentant == "male" || @contratcdd.user.sexerepresentant == "homme" && @contratcdd.user.sexerepresentant.present? %>
+         Monsieur
+      <% else %>
+      Madame/Mademoiselle
+      <% end %>
+      <% if @contratcdd.user.nomrepresentant.present? %>
+      <b><%= @contratcdd.user.nomrepresentant.upcase %>
+      <% end %>
+      <% if @contratcdd.user.prenomrepresentant.present? %>
+      <%= @contratcdd.user.prenomrepresentant %></b>,
+      <% end %>
+
+
+
+      <% if @contratcdd.user.fonctionrepresentant.present? %>
+      <i><%= @contratcdd.user.fonctionrepresentant %></i>
+      <% end %>
+    <% end %><br/>
+Dont les cotisations de sécurité sociale sont versées sous le numéro :
+      <b><% if @contratcdd.user.numerourssaf.present? %>
+    <%= @contratcdd.user.numerourssaf %> </b>à l'URSSAF
+      <% end %>
+      <b><% if @contratcdd.user.regionurssaf.present? %>
+      <%= @contratcdd.user.regionurssaf %></b>
+      <% end %>
+      située à
+      <b><% if @contratcdd.user.adresseurssaf.present? %>
+      <%= @contratcdd.user.adresseurssaf %></b>
+      <% end %></p>
+      <p>Ci-après désigné l’employeur.</p>
+      <p> <div class="partie"><b>D'une part,</b></div> </p><br/>
+</div>
+
+  <div class="bar">
+    <b>Et </b>
+  </div>
+
+  <div class="societe">
+    <h4>
+    <% if @contratcdd.employee.empcivilite.present? %>
+    <%= @contratcdd.employee.empcivilite %>
+    <% end %> <% if @contratcdd.employee.nom.present? %>
+    <%= @contratcdd.employee.nom.capitalize %> <% end %><% if @contratcdd.employee.prenom.present? %>
+    <%= @contratcdd.employee.prenom %>
+    <% end %> </h4>
+    <p>
+
+<% if @contratcdd.employee.empcivilite.present? && @contratcdd.employee.empcivilite == "Monsieur" %>
+Né le :
+<% else %>
+Née le :
+<% end %>
+
+
+
+
+    <% if @contratcdd.employee.datedenaissance.present? %>
+    <%= @contratcdd.employee.datedenaissance.strftime('%d/%m/%Y') %> à <% if @contratcdd.employee.lieudenaissance.present? %>
+    <%= @contratcdd.employee.lieudenaissance %><% end %>
+    <br/>Demeurant : <% if @contratcdd.employee.adresse.present? %>
+    <%= @contratcdd.employee.adresse %><% end %>
+    <br/>Nationalité : <% if @contratcdd.employee.nationalite.present? %>
+    <%= @contratcdd.employee.nationalite %> <% end %>
+    <br/>Numéro de sécurité social : <% if @contratcdd.employee.nsecu.present? %>
+    <%= @contratcdd.employee.nsecu %><% end %>
+    <br/><% if @contratcdd.employee.permissejournum.present? %> Titulaire
+    permis de séjour du N° <%= @contratcdd.employee.permissejournum %> délivré(e) le <%= @contratcdd.employee.permissejourdate.strftime('%d/%m/%Y') %>  par la Préfecture <%= @contratcdd.employee.permissejourloc %>, valable jusqu’au <%= @contratcdd.employee.permissejourexp.strftime('%d/%m/%Y') %>
+    <% else %>
+    <% end %>
+    <% end %>
+     </p>
+    <p>Ci-après
+    <!-- logique du sexe -->
+<% if @contratcdd.employee.empcivilite.present? && @contratcdd.employee.empcivilite == "Monsieur" %>
+désigné le salarié.
+<% else %>
+désignée la salariée.
+<% end %>
+
+
+    </p>
+    <p> <div class="partie"><b>D'autre part,</b></div> </p><br/>
+  </div>
+
+  <div class="bar">
+    <b>Il a été convenu ce qui suit :
+ </b>
+  </div>
+
+
+<div class="societe">
+<u><h4>ARTICLE 1: NATURE DU CONTRAT</h4></u>
+
+<p> <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> déclare être libre de tout engagement et n’avoir aucun lien avec un
+autre employeur, notamment dans le cadre d’une clause de non concurrence.</p>
+  <p>
+   L’employeur engage <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> à compter du <%= @contratcdd.debut.strftime('%d/%m/%Y') %>, en qualité de <%= @contratcdd.poste %>,
+classée de la manière suivante : Statut : Employé - Niveau : I - Echelon : 1 - , sous réserve des résultats de
+la visite médicale d&#39;information et de prévention (sauf si celle-ci n’est pas requise du fait de l’existence
+des conditions prescrites à l’article R.4624-15 du Code du travail).
+  </p>
+
+<p>La visite d’information et de prévention devra être réalisée dans un délai qui n'excède pas trois mois à compter de la prise effective du poste de travail.
+</p>
+<p>Si la visite n’est pas réalisée par le médecin du travail, la salariée s’engage à informer le professionnel de santé, au cours de cette visite, de son statut de travailleur handicapé, ou du fait qu’elle est titulaire d’une pension invalidité, ou encore si elle est enceinte, qu’elle vient d’accoucher ou qu’elle allaite, afin d’être orientée sans délai vers le médecin du travail.
+</p>
+<p>Ces fonctions seront exercées à l'adresse suivante : <%= @contratcdd.user.adresseentreprise %>
+</p>
+<p>Il est expressément convenu entre les parties que la mention du lieu de travail n’a qu’une valeur informative.
+</p>
+<p>La déclaration nominative préalable à l'embauche a été remise à l'Urssaf PACA.
+</p>
+<p>Conformément à la loi du 6 janvier 1978, <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> a un droit d’accès et de rectification aux informations portées sur ce document.</p>
+
+<br/>
+<u><h4>ARTICLE 2 : OBJET ET DUREE DU CONTRAT
+</h4></u>
+
+<p><b><%= @contratcdd.user.nomentreprise %></b> engage <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> pour effectuer des travaux saisonniers.
+</p>
+<p>Il est conclu pour la durée de la saison du <%= @contratcdd.debut.strftime('%d/%m/%Y') %> au <%= @contratcdd.fin.strftime('%d/%m/%Y') %>.
+</p>
+<p>Le présent contrat prendra fin automatiquement à l’échéance du terme.
+</p>
+<u><h4>ARTICLE 3 :  LA PERIODE D’ESSAI
+</h4></u>
+
+<p>Il est convenu que <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b>  effectuera une période d’essai de <b>
+
+<% if (@contratcdd.fin-@contratcdd.debut)<8 %>
+  24 heures
+<% elsif (@contratcdd.fin-@contratcdd.debut)<30 %>
+48 heures
+<% elsif (@contratcdd.fin-@contratcdd.debut)<90 %>
+2 semaines
+
+<% else %>
+1 mois
+<% end %>
+
+
+
+
+
+</b>.  (article L. 1242-10 du Code du Travail) qui expirera au plus tard le <b>
+
+</b> à minuit</p>
+<p>Il est précisé que la période d’essai s’entend d’une période de travail effectif. Toute suspension de l’exécution du contrat, quel qu’en soit le motif, entraînera une prolongation de la période d’essai d’une durée équivalente à celle de la suspension.
+</p>
+<p>Au cours de cette période, le contrat pourra être rompu par l'une ou l'autre des parties, à tout moment, sous réserve du délai de prévenance prévu aux articles L. 1221-25 et L. 1221-26 du Code du travail, soit :
+</p>
+<div class="alinea"><p>-  pour  <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b>  : de 24 heures en deçà de 8 jours de présence et 48 heures au-delà.
+<br/>- pour l'employeur :
+<li>de 24 heures en deçà de 8 jours de présence,</li>
+<li>48 heures entre 8 jours et 1 mois,</li>
+<li>2 semaines après 1 mois,</li>
+<li>1 mois après 3 mois de présence.</li>
+</div>
+</p>
+<p>Toute rupture de la période d'essai, quel qu'en soit l'auteur, sera notifiée par écrit, soit par lettre remise en main propre contre récépissé ou adressée en recommandée avec demande d'avis de réception.
+</p>
+<p><b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> s’engage à fournir pendant la période d’essai tous les éléments nécessaires pour constituer son dossier.</p>
+
+
+<u><h4>ARTICLE 4 :  Rémuneration
+</h4></u>
+
+<p>La rémunération mensuelle brute de <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> est fixée à <b><%= @contratcdd.remuneration %> euros</b>  pour <b><%= @contratcdd.heurehebdo %> </b> heures hebdomadaires.
+</p>
+<p>
+  <% if @contratcdd.heurehebdo > 35 %>
+  Cette rémunération comprend la majoration pour les heures effectuées de la 36ème à la 39ème heure.
+  <% else %>
+  <% end %>
+ </p>
+<p>   <% if @contratcdd.heurehebdo > 40 %>
+  Cette rémunération comprend la majoration pour les heures effectuées de la 36ème à la 43ème heure.
+  <% else %>
+  <% end %>
+</p>
+
+<u><h4>ARTICLE 5 :  DURÉE DU TRAVAIL
+</h4></u>
+
+<p>La durée hebdomadaire de travail de <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> est fixée à <b><%= @contratcdd.heurehebdo %> </b>heures.
+</p>
+<p>Toutefois, l’employeur, dans le cadre de son pouvoir de direction, pourra demander à la salariée d’effectuer des heures supplémentaires en sus de cette durée.
+</p>
+<p>Il est précisé que toute heure supplémentaire au-delà de la durée ci-dessus définie ne devra être effectuée que sur demande expresse de l’employeur.
+</p>
+<p>La salariée s’engage à respecter les horaires de travail qui sont établis et portés à sa connaissance par la Direction conformément à la réglementation en vigueur.
+</p>
+
+<u><h4>ARTICLE 6 :  CONVENTION COLLECTIVE
+</h4></u>
+ <p>Le présent contrat est régi par les dispositions légales, réglementaires et conventionnelles applicables dans la <b> <%= @contratcdd.user.conventioncollective %></b>.
+</p>
+
+<p>Sous réserve d'un changement d'activité ou de toute autre situation entraînant leur remise en cause, il est notamment régi par la convention collective suivante : Hôtels, cafés, restaurants actuellement applicable dans la <b><%= @contratcdd.user.conventioncollectivetype %></b>.</p>
+
+<u><h4>ARTICLE 7 : CONGES PAYES
+</h4></u>
+<p><b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> bénéficiera de congés payés dans les conditions de droit commun.</p>
+<p>Les modalités de ce congé seront déterminées par accord avec la direction en fonction des nécessités du
+service et dans la mesure du possible des désidératas de <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b></p>
+<p>Toutefois, dans la mesure où le régime applicable dans l’établissement ne permettrait pas à
+<b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> de prendre effectivement ses congés, il lui sera versée, au terme du
+contrat une indemnité compensatrice de congés payés calculée conformément aux dispositions en
+vigueur.</p>
+
+<u><h4>ARTICLE 8 : OBLIGATIONS PROFESSIONNELLES
+</h4></u>
+<p><b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> s&#39;engage à observer les dispositions réglementant les conditions de
+travail applicables à l’ensemble des salariés de <b> <%= @contratcdd.user.conventioncollective %></b> ainsi que les règles générales concernant la
+discipline et la sécurité du travail.</p>
+<p>La salariée s&#39;engage par ailleurs :
+  <li>- à se conformer aux directives et instructions émanant de la direction ou de son représentant ;</li>
+  <li>- à observer une discrétion professionnelle absolue tant pendant l&#39;exécution qu&#39;après la
+cessation de son contrat, pour tout ce qui concerne les faits ou informations dont elle aura
+connaissance dans l&#39;exercice ou à l&#39;occasion de ses fonctions ;</li>
+  <li>- à observer les horaires de travail qui seront fixés par l&#39;employeur ;</li>
+  <li>- à informer immédiatement l’employeur en cas d’absence quel que soit le motif et à produire
+dans les 48 heures les justificatifs appropriés ;</li>
+  <li>- à faire connaître sans délai tout changement concernant sa situation (domicile, situation
+familiale, enfants à charge….) et autorisation de séjour et de travail sur le territoire français.
+</li>
+  <li>- à transmettre dès expiration des précédents, les documents afférents à son autorisation de
+séjour et de travail sur le territoire français.</li>
+</p><% if @contratcdd.video.present? %>
+
+<p><b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> est informé qu’un système de vidéosurveillance a été mis en place, pour des raisons de sécurité et afin de se prémunir de vols éventuels, à l’extérieur et à l’intérieur de l’établissement.</p>
+<p>Les images enregistrées sont exclusivement destinées à l’employeur et ne donneront pas lieu à constitution d’un fichier nominatif.
+</p>
+<p>Le dispositif installé peut servir à surveiller l’activité du personnel ou toute personne située dans l’enceinte de la société et ses dépendances.
+</p>
+<p>Le salarié reconnaît en conséquence avoir été informé du but de l’installation de ce système et de l’utilisation des données.
+</p>
+<p>Il reconnaît avoirété informé que, conformément à la loi n°78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, modifiée par la loi du 6 août 2004, il dispose d’un droit d’accès et de rectification des données recueillies par le système de vidéosurveillance et d’un droit d’opposition, ainsi que des modalités d’exercice de ce droit.
+</p>
+<% else %>
+<% end %>
+
+
+<u><h4>ARTICLE 9 : FIDELITÉS
+</h4></u>
+
+<p>Pendant la durée du présent contrat, <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> s&#39;engage à ne participer, à
+aucune activité concurrente de <b> <%= @contratcdd.user.conventioncollective %></b> qui l&#39;emploie.</p>
+
+<u><h4>ARTICLE 10 : Avantages sociaux
+</h4></u>
+
+<p><b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b>  bénéficiera des lois sociales instituées en faveur des salariés notamment en matière de sécurité sociale et en ce qui concerne le régime de retraite complémentaire.
+</p>
+<p> <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> relève de la catégorie Employé et bénéficiera ainsi d’une affiliation dès son entrée au sein de <b> <%= @contratcdd.user.conventioncollective %></b> et sous réserve d’une remise en cause, auprès de :
+<li><%= @contratcdd.user.caisseretraite %>, caisse de retraite complémentaire.</li>
+<li><%= @contratcdd.user.caisseprevoyance %>, caisse de prévoyance.</li>
+</p>
+<p>Il est précisé que l’affiliation auprès de ces organismes est donnée à titre indicatif.
+</p>
+
+
+<u><h4>ARTICLE 11 : RUPTURE ANTICIPEE DU CONTRAT
+</h4></u>
+
+<p>Conformément aux dispositions légales actuellement applicables et sous réserve de leur modification, après la période d’essai, le présent contrat ne pourra être résilié avant le terme convenu, sauf accord des parties, qu’en cas de faute grave, lourde, de force majeure, inaptitude constatée par le Médecin du travail ou si  <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> peut justifier de la conclusion d’un contrat à durée indéterminée. Dans ce dernier cas, Mademoiselle DUMENIL Pauline devra respecter un préavis dont la durée sera calculée conformément à l'article L. 1243-2 du Code du travail.
+
+
+</p>
+
+<p>En dehors de ces hypothèses, la rupture anticipée du contrat de travail à durée déterminée qui intervient à l’initiative de <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> en dehors des cas prévus aux articles L. 1243-1 et L. 1243-2 du Code du travail ouvre droit pour l’employeur à des dommages et intérêts correspondant au préjudice subi.
+</p>
+<u><h4>ARTICLE 12 : RENOUVELLEMENT
+</h4></u>
+
+<p>Au cas où la saison ne serait pas achevée à la date fixée, le contrat pourra être renouvelé dans des conditions qui feront l'objet d'un avenant soumis à <b><%= @contratcdd.employee.empcivilite %> <%= @contratcdd.employee.nom.capitalize %> <%= @contratcdd.employee.prenom %></b> avant le terme initialement fixé.
+
+</p>
+
+<u><h4>ARTICLE 13 : Fin de contrat
+</h4></u>
+<p>Le contrat prendra fin automatiquement à l'échéance du terme prévu le <%= @contratcdd.fin.strftime('%d/%m/%Y') %>.
+</p>
+<p>Le présent contrat n’ouvrira pas droit au bénéfice d’une indemnité de fin de contrat.
+</p>
+<br/>
+
+<div class="partie">Fait à <b><%= @contratcdd.user.ville %></b><br/>
+                  Le <b> <% if @contratcdd.updated_at.present?  %> <%= @contratcdd.updated_at.strftime('%d/%m/%Y') %> <% else %><%= @contratcdd.created_at.strftime('%d/%m/%Y') %> <% end %>,</b><br/>
+                  En deux exemplaires </div>
+
+
+
+<b> <p>Signatures précédées de la mention « Lu et approuvé ».
+</p>
+<p>Signature du salarié&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160   Signature de l’employeur</p>  </b>
+
+<br/><br/><br/><br/><br/><br/>
+
+</div>
+
+
+</body>
+</html>

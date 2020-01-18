@@ -1,0 +1,18 @@
+<div class="banner" style="background-image: radial-gradient(250.49px at 50% 50%,#1f4456 0,#153342 100%), url('https://mathieuabeille.github.io/aca-consult/images/cockpit-09103586.jpg');">
+  <div class="banner-content">
+    <h1>Fastcontract</h1>
+    <h4>Générez des contrats CDD en 1 clic</h4>
+    <br/>
+    <% if user_signed_in? %>
+      <%= link_to 'Nouveau Contrat', employees_path, class: 'btn-medium btn-lg'  %>
+    <% else %>
+    <%= link_to "Connexion", new_user_session_path, class: 'btn-medium btn-lg'  %>
+    <% end %>
+  </div>
+
+</div>
+<div class="box1">
+    <div><%= image_tag 'login.png', class: "flatimg" %><h3>Inscription</h3> <p>en quelques secondes</p></div>
+    <div><%= image_tag 'like.png', class: "flatimg" %><h3>Mise en place</h3><p>sous 24 heures</p> </div>
+    <div><%= image_tag 'contract.png', class: "flatimg" %><h3>Des contrats CDD</h3><p>en 1 clic</p></div>
+  </div>

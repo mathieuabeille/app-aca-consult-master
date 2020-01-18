@@ -1,0 +1,35 @@
+<div class="log">
+<br/>
+  <center>
+
+<%= link_to root_path do %>
+    <%= image_tag "logo.png", style: "height:75px;" %>
+  <% end %>
+
+
+  </center><br/>
+  <div class="logbox1">
+    <h3><center>Accéder à mon espace</center></h3><br/>
+  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-inputs">
+      <%= f.input :email, label: 'Identifiant',required: false, autofocus: true %>
+      <%= f.input :password, label: 'Mot de passe',required: false %>
+<%= f.input :remember_me, label: 'Se souvenir de moi', as: :boolean if devise_mapping.rememberable?  %>
+    </div>
+    <%= render "devise/shared/links" %>
+
+
+
+  </div><br/>
+     <div class="form-actions">
+      <center>
+
+        <%= f.button :submit, "Connexion", class: 'btn-medium', style: 'background-color:#163442!important;' %></center>
+    </div>
+
+  <% end %>
+</div>
+
+
+<% @skip_footer = true %>
+

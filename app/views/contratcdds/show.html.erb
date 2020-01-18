@@ -1,0 +1,33 @@
+
+<div class="logbox">
+<center><h3>Récapitulatif du contrat</h3>
+
+
+
+
+
+<p>
+  <%= @contratcdd.employee.nom %>
+  <%= @contratcdd.employee.prenom %>, <i>
+  <%= @contratcdd.employee.adresse %></i>
+</p>
+
+
+
+  <p>Du <b>  <%= @contratcdd.debut %></b> au <b>  <%= @contratcdd.fin %></b></p>
+
+ <p><b>Nombre heure par semaine:</b>  <%= @contratcdd.heurehebdo %> heures</p>
+  <p><b>Rémuneration par heure: </b>  <%= @contratcdd.remuneration %> Euros.</p>
+
+
+
+
+
+<br/>
+
+
+</center>
+<center><%= link_to "Générer le contrat", contratcdd_path(@contratcdd, format: 'pdf'), class: 'btn btn-medium btn-lg' %></center>
+<br/><br/>
+
+</div>

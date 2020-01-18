@@ -1,0 +1,72 @@
+<div class="logbox-contrat">
+<%= simple_form_for([@employee, @contratcdd]) do |f| %>
+  <%= f.error_notification %>
+<div class="form-inputs">
+
+
+
+<% @skip_footer = true %>
+<!-- Modal -->
+
+
+<script type="text/javascript">
+    $('.datetimepicker').datetimepicker();
+</script>
+
+
+      <center><h3>Nouveau contrat</h3></center>
+    <%= f.input :remuneration, label: "Salaire horaire" %>
+    <%= f.input :heurehebdo, label: "Nombre d'heure hebdomadaire" %>
+      <%= f.input :nomposte, collection: [ "Serveur", "Chef de rang", "Runner"] ,  selected: "Serveur", label: "Intitulé du poste" %>
+
+
+<!--         <input type="checkbox" checked data-toggle="toggle"> -->
+
+
+
+
+
+
+
+
+<div class="container"><div class="row">
+  <div class="col-sm-3">   <b>Date de début:</b> <br/>     <%= f.input_field :debut, as: :string, class: 'datepicker text-center form-control' %>
+</div>
+<div class="col-sm-3">  <b>Date de fin:</b> <br/>       <%= f.input_field :fin, as: :string, class: 'datepicker text-center form-control'%>
+</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Modal 2 -->
+
+ <center>
+  <%= f.input :video, as: :boolean, checked_value: true, unchecked_value: false, label: "Présence de caméra de surveillance" %>
+  <%= f.input :periodeessai, as: :boolean, checked_value: true, unchecked_value: false, label: "La période d'essai a été faite" %>
+
+<div class="form-actions">
+     <%= f.button :submit, "Créer le contrat", class: 'btn-medium', label: "Créer le contrat" %></center>
+
+<% end %></div>
+</div>
+
+
+</div>
+
+
+
+
+
+

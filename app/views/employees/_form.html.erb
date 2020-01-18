@@ -1,0 +1,99 @@
+<div class="logbox">
+<%= simple_form_for(@employee) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+
+
+<!-- identification  -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2">
+      <%= f.input :empcivilite, collection: [ "Madame", "Mademoiselle", "Monsieur"] , label: "Civilité", selected: "Monsieur" %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :prenom, label: "Prénom" %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :nom, label: "Nom" %>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8">
+       <%= f.input :adresse, label: "Adresse" %>
+      <%= f.input :datedenaissance, as: :date, label: "Date de naissance", start_year: Date.today.year - 90,
+                              end_year: Date.today.year - 16 %>
+    </div>
+  </div>
+
+
+<!-- nationalité -->
+    <div class="row">
+    <div class="col-sm-2">
+      <br/><button type="button" class="btn-medium" data-toggle="modal" data-target="#horsue">
+        Nationalité hors Union Européenne
+      </button>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :lieudenaissance, label: "Lieu de naissance" %>
+    </div>
+    <div class="col-sm-4">
+      <%= f.input :nationalite, label: "Nationalité" %>
+
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+    </div>
+    <div class="col-sm-8">
+       <%= f.input :nsecu, label: "Numéro de sécurité sociale" %>
+    </div>
+  </div>
+
+<!-- emploi -->
+
+
+
+<!-- Modal -->
+
+
+
+<!-- Modal 2 -->
+<div class="modal fade" id="horsue" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Travailleur de nationalité hors UE</h4>
+      </div>
+        <div class="modal-body">
+        <%= f.input :permissejournum, label: "Numéro de permis de séjour" %>
+          <%= f.input :permissejourdate, label: "Début du permis de séjour" %>
+          <%= f.input :permissejourexp, label: "Expiration du permis de séjour" %>
+          <%= f.input :permissejourloc, label: "Préfecture qui a délivré le permis de séjour" %>
+
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-medium " data-dismiss="modal">Sauvegarder</button>
+      </div>
+    </div>
+  </div>
+</div>
+ <center>
+
+
+<div class="form-actions">
+     <%= f.button :submit, "Créer l'employée", class: 'btn-medium', label: "Créer l'employée" %>
+   </center>
+
+  </div>
+<% end %>
+</div>
+</div>
+
+
+
+
+

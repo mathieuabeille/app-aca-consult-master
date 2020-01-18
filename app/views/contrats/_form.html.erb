@@ -1,0 +1,207 @@
+<div class="logbox-contrat">
+<%= simple_form_for([@employee, @contrat]) do |f| %>
+  <%= f.error_notification %>
+<div class="form-inputs">
+
+
+
+<% @skip_footer = true %>
+<!-- Modal -->
+
+
+<script type="text/javascript">
+    $('.datetimepicker').datetimepicker();
+</script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <center><h3>Nouveau contrat</h3></center>
+      <%= f.input :remuneration, required: true, label: "Salaire horaire" %>
+      <%= f.input :nomposte, collection: [ "Serveur", "Chef de rang", "Runner"] ,  selected: "Serveur", label: "Intitulé du poste" %>
+
+      <div class=" col-sm-3 checkpadding">
+
+<!--         <input type="checkbox" checked data-toggle="toggle"> -->
+
+
+        <%= f.input :jour1, label: false, checked_value: true, unchecked_value: false,  :input_html => { :checked => true, :class => 'btn btn-primary ', :data => {:toggle => 'toggle'} } %>
+
+      </div>
+
+
+
+      <div class=" col-sm-9">
+        <div class='row datetimerange'>
+    <%= f.input :jour1debut, as: :datetime_picker,label: "Début de service",  wrapper: :ranged_datetime %>
+    <%= f.input :jour1fin, as: :datetime_picker, label: "Fin de service", wrapper: :ranged_datetime %>
+</div>
+
+
+
+
+
+
+
+        <hr width="50%" align="left" color="#F56D55">
+      </div>
+
+  <div class=" col-sm-3 checkpadding">
+
+        <%= f.input :jour2,  label: false, checked_value: true, unchecked_value: false,  :input_html => { :class => 'btn btn-primary', :data => {:toggle => 'toggle'} } %>
+
+      </div>
+
+
+
+      <div class=" col-sm-9">
+        <div class='row datetimerange'>
+    <%= f.input :jour2debut, as: :datetime_picker,label: "Début de service",  wrapper: :ranged_datetime %>
+    <%= f.input :jour2fin, as: :datetime_picker, label: "Fin de service", wrapper: :ranged_datetime %>
+</div>
+
+
+
+
+
+
+
+        <hr width="50%" align="left" color="#F56D55">
+      </div>  <div class=" col-sm-3 checkpadding">
+
+        <%= f.input :jour3,  label: false, checked_value: true, unchecked_value: false,  :input_html => { :class => 'btn btn-primary', :data => {:toggle => 'toggle'} } %>
+
+      </div>
+
+
+
+      <div class=" col-sm-9">
+        <div class='row datetimerange'>
+    <%= f.input :jour3debut, as: :datetime_picker,label: "Début de service",  wrapper: :ranged_datetime %>
+    <%= f.input :jour3fin, as: :datetime_picker, label: "Fin de service", wrapper: :ranged_datetime %>
+</div>
+
+
+
+
+
+
+
+        <hr width="50%" align="left" color="#F56D55">
+      </div>  <div class=" col-sm-3 checkpadding">
+
+        <%= f.input :jour4,  label: false, checked_value: true, unchecked_value: false,  :input_html => { :class => 'btn btn-primary', :data => {:toggle => 'toggle'} } %>
+
+      </div>
+
+
+
+      <div class=" col-sm-9">
+        <div class='row datetimerange'>
+    <%= f.input :jour4debut, as: :datetime_picker,label: "Début de service",  wrapper: :ranged_datetime %>
+    <%= f.input :jour4fin, as: :datetime_picker, label: "Fin de service", wrapper: :ranged_datetime %>
+</div>
+
+
+
+
+
+
+
+        <hr width="50%" align="left" color="#F56D55">
+      </div>  <div class=" col-sm-3 checkpadding">
+
+        <%= f.input :jour5,  label: false, checked_value: true, unchecked_value: false,  :input_html => { :class => 'btn btn-primary', :data => {:toggle => 'toggle'} } %>
+
+      </div>
+
+
+
+      <div class=" col-sm-9">
+        <div class='row datetimerange'>
+    <%= f.input :jour5debut, as: :datetime_picker,label: "Début de service",  wrapper: :ranged_datetime %>
+    <%= f.input :jour5fin, as: :datetime_picker, label: "Fin de service", wrapper: :ranged_datetime %>
+</div>
+
+
+
+
+
+
+
+        <hr width="50%" align="left" color="#F56D55">
+      </div>  <div class=" col-sm-3 checkpadding">
+
+        <%= f.input :jour6,  label: false, checked_value: true, unchecked_value: false,  :input_html => { :class => 'btn btn-primary', :data => {:toggle => 'toggle'} } %>
+
+      </div>
+
+
+
+      <div class=" col-sm-9">
+        <div class='row datetimerange'>
+    <%= f.input :jour6debut, as: :datetime_picker,label: "Début de service",  wrapper: :ranged_datetime %>
+    <%= f.input :jour6fin, as: :datetime_picker, label: "Fin de service", wrapper: :ranged_datetime %>
+</div>
+
+
+
+
+
+
+
+        <hr width="50%" align="left" color="#F56D55">
+      </div>  <div class=" col-sm-3 checkpadding">
+
+        <%= f.input :jour7,  label: false, checked_value: true, unchecked_value: false,  :input_html => { :class => 'btn btn-primary', :data => {:toggle => 'toggle'} } %>
+
+      </div>
+
+
+
+      <div class=" col-sm-9">
+        <div class='row datetimerange'>
+    <%= f.input :jour7debut, as: :datetime_picker,label: "Début de service",  wrapper: :ranged_datetime %>
+    <%= f.input :jour7fin, as: :datetime_picker, label: "Fin de service", wrapper: :ranged_datetime %>
+</div>
+
+
+
+
+
+
+
+        <hr width="50%" align="left" color="#F56D55">
+      </div>
+
+
+
+
+
+
+
+    </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- Modal 2 -->
+
+ <center>
+  <%= f.input :video, as: :boolean, checked_value: true, unchecked_value: false, label: "Présence de caméra de surveillance" %>
+  <%= f.input :periodeessai, as: :boolean, checked_value: true, unchecked_value: false, label: "La période d'essai a été faite" %>
+
+<div class="form-actions">
+     <%= f.button :submit, "Créer le contrat", class: 'btn-medium', label: "Créer le contrat" %></center>
+
+<% end %>
+</div>
+</div>
+</div>
+
+
+
+
+

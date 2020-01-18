@@ -1,0 +1,29 @@
+ <%= render "searchbar" %>
+
+
+
+<div class="table">
+<% if @invoices.present? %>
+  <% @invoices.each do |invoice| %>
+    <%= link_to invoice_path(invoice), class: 'card-link' do %>
+      <div class="table-row">
+        <b><%= invoice.nom %> - <%= invoice.entite %></b>
+        <%= invoice.fournisseur %>
+        <i><%= invoice.emplacement %></i>
+        <%= link_to invoice_path(invoice), method: :delete, data: { confirm: "Confirmation" } do %>
+        <i class="fa fa-trash icons card-link" aria-hidden="true"></i>
+        <% end %>
+        <%= link_to edit_invoice_path(invoice) do %>
+          <i class="fa fa-pencil icons card-link" aria-hidden="true"></i>
+        <% end %>
+      </div>
+      <% end %>
+   <% end %>
+  <% end %>
+</div>
+
+
+
+
+
+

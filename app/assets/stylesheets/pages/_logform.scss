@@ -1,0 +1,76 @@
+@media(min-width: 600px){
+  .logbox{
+  padding: 20px;
+  width: 90% !important;
+  }
+}
+
+  .logbox{
+    padding: 20px;
+    width: 90vw;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+    min-height: calc(100vh - 110px);
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+
+@media(min-width: 600px){
+  .logbox-contrat{
+  padding: 20px;
+  width: 50% !important;
+  }
+}
+
+  .logbox-contrat{
+    border-radius: 5px;
+    padding: 20px;
+    width: 90vw;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: calc(100vh - 110px);
+  }
+
+
+
+
+
+@media(min-width: 600px){
+  .logbox1{
+  padding: 20px;
+  width: 400px !important;
+  }
+}
+
+  .logbox1{
+    border-radius: 8px;
+    padding: 20px;
+    width: 90vw;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: white;
+    margin: auto;
+
+  }
+.log{
+  background-image:  linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://mathieuabeille.github.io/aca-consult/images/cockpit-09103586.jpg'), ;
+      min-height: 100vh;
+}
+
+a{
+  color: $orange;
+  opacity:0.6;
+  text-decoration: none;
+  font-weight: lighter;
+  font-size: 14px;
+}
+a:hover{
+  color: $orange;
+  opacity: 1;
+  text-decoration: none;
+  font-weight: lighter;
+}

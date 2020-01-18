@@ -1,0 +1,455 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <%= wicked_pdf_stylesheet_link_tag  'contrats' %>
+
+</head>
+<body>
+
+<style media="screen" type="text/css">
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+li {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  padding-left: 100px;
+  line-height: 150%;
+}
+
+p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+}
+
+b{
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  line-height: 150%;
+
+}
+h4{
+      margin: 0px;
+      padding-top: 10px;
+      line-height: 30%;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+
+i{
+    line-height: 30%;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+  }
+
+
+.head {
+  font-family: 'Open Sans', sans-serif;
+  padding-top: 10px;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+}
+
+.bar {
+  box-shadow: 0 1px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 2px;
+  padding-left: 20px;
+  padding-top: 5px;
+
+  p {
+    padding-top: 5px;
+  }
+
+}
+
+.societe{
+  padding-left: 20px;
+  padding-top: 20px;
+}
+
+.representant{
+  padding-left: 20px;
+  padding-top: 5px;
+
+}
+
+.partie {
+  padding-left: 450px;
+  font-size: 14px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.alinea {
+  padding-left: 20px;
+}
+
+
+</style>
+
+<div class="head">
+    <h1>Contrat de travail à durée déterminée d’usage
+    extra de la restauration</h1>
+    <% if @contrat.jour1 == true %>
+    à effet du <b><%= @contrat.jour1debut.strftime('%d/%m/%Y')
+   %></b>
+    <% end %>
+  </div>
+<br/>
+  <div class="bar">
+    <b>Entre les soussignés </b>
+  </div>
+
+  <div class="societe">
+    <% if @contrat.user.nomentreprise.present? %>
+    <h4> <%= @contrat.user.nomentreprise %></h4>
+    <% end %>
+    <p>
+      <% if @contrat.user.formejuridique.present? %>
+       <%= @contrat.user.formejuridique %>
+      <% end %>
+      <% if @contrat.user.numerosiret.present? %>
+      immatriculée sous le numéro SIRET <%= @contrat.user.numerosiret %>
+      <% end %><br/>
+    <% if @contrat.user.numerocnaf.present? %>
+    Code NAF: <%= @contrat.user.numerocnaf %>
+    <% end %><br/>
+    <% if @contrat.user.adresseentreprise.present? %>
+    Dont le siège social est situé : <%= @contrat.user.adresseentreprise %>
+    <% end %>
+
+    <% if @contrat.user.formejuridique == "Société en nom propre" && @contrat.user.formejuridique.present? %>
+<!--     Rien afficher -->
+    <% else %>
+    <br/>Agissant par l'intermédiaire de son représentant légal :
+      <% if @contrat.user.sexerepresentant == "Masculin" || @contrat.user.sexerepresentant == "Male" || @contrat.user.sexerepresentant == "Homme" || @contrat.user.sexerepresentant == "masculin" || @contrat.user.sexerepresentant == "male" || @contrat.user.sexerepresentant == "homme" && @contrat.user.sexerepresentant.present? %>
+         Monsieur
+      <% else %>
+      Madame/Mademoiselle
+      <% end %>
+      <% if @contrat.user.nomrepresentant.present? %>
+      <b><%= @contrat.user.nomrepresentant.upcase %>
+      <% end %>
+      <% if @contrat.user.prenomrepresentant.present? %>
+      <%= @contrat.user.prenomrepresentant %></b>,
+      <% end %>
+
+
+
+      <% if @contrat.user.fonctionrepresentant.present? %>
+      <i><%= @contrat.user.fonctionrepresentant %></i>
+      <% end %>
+    <% end %><br/>
+Dont les cotisations de sécurité sociale sont versées sous le numéro :
+      <b><% if @contrat.user.numerourssaf.present? %>
+    <%= @contrat.user.numerourssaf %> </b>à l'URSSAF
+      <% end %>
+      <b><% if @contrat.user.regionurssaf.present? %>
+      <%= @contrat.user.regionurssaf %></b>
+      <% end %>
+      située à
+      <b><% if @contrat.user.adresseurssaf.present? %>
+      <%= @contrat.user.adresseurssaf %></b>
+      <% end %></p>
+      <p>Ci-après désigné l’employeur.</p>
+      <p> <div class="partie"><b>D'une part,</b></div> </p><br/>
+</div>
+
+  <div class="bar">
+    <b>Et </b>
+  </div>
+
+  <div class="societe">
+    <h4>
+    <% if @contrat.employee.empcivilite.present? %>
+    <%= @contrat.employee.empcivilite %>
+    <% end %> <% if @contrat.employee.nom.present? %>
+    <%= @contrat.employee.nom.capitalize %> <% end %><% if @contrat.employee.prenom.present? %>
+    <%= @contrat.employee.prenom %>
+    <% end %> </h4>
+    <p>
+
+<% if @contrat.employee.empcivilite.present? && @contrat.employee.empcivilite == "Monsieur" %>
+Né le :
+<% else %>
+Née le :
+<% end %>
+
+
+
+
+    <% if @contrat.employee.datedenaissance.present? %>
+    <%= @contrat.employee.datedenaissance.strftime('%d/%m/%Y') %> à <% if @contrat.employee.lieudenaissance.present? %>
+    <%= @contrat.employee.lieudenaissance %><% end %>
+    <br/>Demeurant : <% if @contrat.employee.adresse.present? %>
+    <%= @contrat.employee.adresse %><% end %>
+    <br/>Nationalité : <% if @contrat.employee.nationalite.present? %>
+    <%= @contrat.employee.nationalite %> <% end %>
+    <br/>Numéro de sécurité social : <% if @contrat.employee.nsecu.present? %>
+    <%= @contrat.employee.nsecu %><% end %>
+    <br/><% if @contrat.employee.permissejournum.present? %> Titulaire
+    permis de séjour du N° <%= @contrat.employee.permissejournum %> délivré(e) le <%= @contrat.employee.permissejourdate.strftime('%d/%m/%Y') %>  par la Préfecture <%= @contrat.employee.permissejourloc %>, valable jusqu’au <%= @contrat.employee.permissejourexp.strftime('%d/%m/%Y') %>
+    <% else %>
+    <% end %>
+    <% end %>
+     </p>
+    <p>Ci-après
+    <!-- logique du sexe -->
+<% if @contrat.employee.empcivilite.present? && @contrat.employee.empcivilite == "Monsieur" %>
+désigné le salarié.
+<% else %>
+désignée la salariée.
+<% end %>
+
+
+    </p>
+    <p> <div class="partie"><b>D'autre part,</b></div> </p><br/>
+  </div>
+
+  <div class="bar">
+    <b>Il a été convenu ce qui suit :
+ </b>
+  </div>
+
+<div class="societe">
+  <u><h4>ARTICLE 1: NATURE DU CONTRAT</h4></u>
+  <p>
+   L’employeur engage <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b>, en application des articles D. 1242-1,  L. 1242-1 et L. 1242-2 3° du Code du Travail, ainsi que par l’article 14 de la Convention collective nationale des Hôtels, Cafés Restaurant (HCR), par un contrat à durée déterminée d’usage, sous réserve de des résultats de la visite médicale d'information et de prévention (sauf si celle-ci n’est pas requise du fait de l’existence des conditions prescrites à l’article R.4624-15 du Code du travail).
+  </p>
+  <p>La visite d’information et de prévention devra être réalisée dans un délai qui n'excède pas trois mois à compter de la prise effective du poste de travail.
+</p>
+<p>
+  Si la visite n’est pas réalisée par le médecin du travail, le salarié s’engage à informer le professionnel de santé, au cours de cette visite, de son statut de travailleur handicapé, ou du fait qu’il est titulaire d’une pension invalidité, afin d’être orienté sans délai vers le médecin du travail.
+</p>
+<p>Le travail qui sera accompli, est effectué dans le secteur de la restauration, activité de l’employeur, dans lequel il est d’usage constant de ne pas recourir à un contrat à durée indéterminée pour exécuter un travail par nature temporaire.
+</p><br/>
+<u><h4>ARTICLE 2: L’ENGAGEMENT
+</h4></u>
+<p>
+Le présent contrat est conclu pour pourvoir de manière temporaire, en qualité d’extra, l’emploi suivant : <b><%= @contrat.nomposte %>
+   </b> classé de la manière suivante : Statut : Employé - Niveau: I  Echelon: 1.
+</p>
+<p>La déclaration nominative préalable à l'embauche a été remise à l'Urssaf <%= @contrat.user.regionurssaf %></p>
+<p>
+  Conformément à la loi du 6 janvier 1978, <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> a un droit d’accès et de rectification aux informations portées sur ce document.
+
+</p><br/>
+<u><h4>ARTICLE 3 : DUREE DU CONTRAT
+
+</h4></u>
+
+<p>
+L’employeur embauche <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> à compter du <b><%= @contrat.jour1debut.strftime('%d/%m/%Y') %></b>, en qualité de <b><%= @contrat.nomposte %></b> pour une période de <b> <% if @contrat.jour1 == false %>
+Vous avez mal rempli le formulaire d'horaire !</b>
+<% elsif @contrat.jour1 == true && @contrat.jour2 == false %>
+1 </b> jour.
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == false %>
+2 </b> jours.
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == false %>
+3 </b> jours.
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour4 == true && @contrat.jour4 == true && @contrat.jour5 == false %>
+4 </b> jours.
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == true && @contrat.jour5 == true && @contrat.jour6 == false %>
+5 </b> jours.
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == true && @contrat.jour5 == true && @contrat.jour6 == true && @contrat.jour7 == false %>
+6 </b> jours.
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == true && @contrat.jour5 == true && @contrat.jour6 == true && @contrat.jour7 == true %>
+7</b> jours.
+<% else %>
+Vérifiez les jours que vous avez coché dans le formulaire de planning! Une erreur est survenue.
+<% end %>
+
+
+ La présence du salarié est fixée en fonction des nécessités du service, conformément aux dispositions en vigueur. En tout état de cause, le salarié devra indiquer les heures de travail qu’il a accomplies sur un cahier d’émargement.</p>
+
+<p>Le présent contrat prendra automatiquement fin à l’échéance du terme prévu, soit le <b>
+
+<% if @contrat.jour1 == false %>
+Vous avez mal rempli le formulaire d'horaire !</b>
+<% elsif @contrat.jour1 == true && @contrat.jour2 == false %>
+  <%= @contrat.jour1fin.strftime('%d/%m/%Y') %>
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == false %>
+<%= @contrat.jour2fin.strftime('%d/%m/%Y') %>
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == false %>
+<%= @contrat.jour3fin.strftime('%d/%m/%Y') %>
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour4 == true && @contrat.jour4 == true && @contrat.jour5 == false %>
+<%= @contrat.jour4fin.strftime('%d/%m/%Y') %>
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == true && @contrat.jour5 == true && @contrat.jour6 == false %>
+<%= @contrat.jour5fin.strftime('%d/%m/%Y') %>
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == true && @contrat.jour5 == true && @contrat.jour6 == true && @contrat.jour7 == false %>
+<%= @contrat.jour6fin.strftime('%d/%m/%Y') %>
+<% elsif @contrat.jour1 == true &&  @contrat.jour2 == true && @contrat.jour3 == true && @contrat.jour4 == true && @contrat.jour5 == true && @contrat.jour6 == true && @contrat.jour7 == true %>
+<%= @contrat.jour7fin.strftime('%d/%m/%Y') %>
+<% else %>
+Vérifiez les jours que vous avez coché dans le formulaire de planning! Une erreur est survenue.
+<% end %>
+</b>
+
+</p>
+
+
+<br/>
+<% if @contrat.periodeessai == true %>
+
+
+
+
+<% else %>
+<u><h4>ARTICLE 4 : LA PERIODE D’ESSAI
+</h4></u>
+<p>Il est convenu que <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b>  effectuera une période d’essai de <b>24 heures</b>.  (article L. 1242-10 du Code du Travail) qui expirera au plus tard le <b>
+
+</b> à minuit</p>
+<p>Il est précisé que la période d’essai s’entend d’une période de travail effectif. Toute suspension de l’exécution du contrat, quel qu’en soit le motif, entraînera une prolongation de la période d’essai d’une durée équivalente à celle de la suspension.
+</p>
+<p>Au cours de cette période, le contrat pourra être rompu par l'une ou l'autre des parties, à tout moment, sous réserve du délai de prévenance prévu aux articles L. 1221-25 et L. 1221-26 du Code du travail, soit :
+</p>
+<div class="alinea"><p>-  pour  <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b>  : de 24 heures en deçà de 8 jours de présence et 48 heures au-delà.
+<br/>- pour l'employeur :
+<li>de 24 heures en deçà de 8 jours de présence,</li>
+<li>48 heures entre 8 jours et 1 mois,</li>
+<li>2 semaines après 1 mois,</li>
+<li>1 mois après 3 mois de présence.</li>
+</div>
+</p>
+<p>Toute rupture de la période d'essai, quel qu'en soit l'auteur, sera notifiée par écrit, soit par lettre remise en main propre contre récépissé ou adressée en recommandée avec demande d'avis de réception.
+</p>
+<p><b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> s’engage à fournir pendant la période d’essai tous les éléments nécessaires pour constituer son dossier.</p>
+
+<br/>
+<% end %>
+<u><h4>ARTICLE <% if @contrat.periodeessai == true %>4<% else %>5 <% end %> : LIEU DE TRAVAIL</h4></u>
+<p>Ces fonctions seront exercées à l'adresse suivante : <%= @contrat.user.adresseentreprise %></p>
+<p>Il est toutefois précisé que le lieu de travail est donné à titre indicatif.</p>
+<br/>
+<u><h4>ARTICLE <% if @contrat.periodeessai == true %>5<% else %>6 <% end %> : REMUNERATION</h4></u>
+<% nombreheure = 0 %>
+<% nombreheure = (@contrat.jour1fin - @contrat.jour1debut) if @contrat.jour1 == true %>
+<% nombreheure += (@contrat.jour2fin - @contrat.jour2debut) if @contrat.jour2 == true %>
+<% nombreheure += (@contrat.jour3fin - @contrat.jour3debut) if @contrat.jour3 == true %>
+<% nombreheure += (@contrat.jour4fin - @contrat.jour4debut) if @contrat.jour4 == true %>
+<% nombreheure += (@contrat.jour5fin - @contrat.jour5debut) if @contrat.jour5 == true %>
+<% nombreheure += (@contrat.jour6fin - @contrat.jour6debut) if @contrat.jour6 == true %>
+<% nombreheure += (@contrat.jour7fin - @contrat.jour7debut) if @contrat.jour7 == true %>
+
+
+<p>En contrepartie de son activité, <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> percevra une rémunération brute de <b> <%= @contrat.remuneration*nombreheure/3600 %> euros</b>, pour
+
+
+
+
+
+  <b>
+
+
+<%= nombreheure/3600 %>
+
+
+heures
+
+  </b>, ainsi que 10% de ce montant au titre des congés payés.</p>
+
+
+<br/>
+<u><h4>ARTICLE <% if @contrat.periodeessai == true %>6<% else %>7 <% end %> : DUREE DU TRAVAIL</h4></u>
+<p>La durée hebdomadaire de travail de <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> est fixée à <b><%= nombreheure/3600 %></b> hfin selon la répartition suivante :
+</p>
+<div class="alinea"><ul style="list-style-type:none">
+<% if @contrat.jour1 == true %> <li>- Le<b><%= @contrat.jour1debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour1debut.strftime('%HH%M') %> à <%= @contrat.jour1fin.strftime('%HH%M') %>. </li> <% end %>
+
+<% if @contrat.jour2 == true %> <li>- Le <b><%= @contrat.jour2debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour2debut.strftime('%HH%M') %> à <%= @contrat.jour2fin.strftime('%HH%M') %>. </li> <% end %>
+<% if @contrat.jour3 == true %> <li>- Le <b><%= @contrat.jour3debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour3debut.strftime('%HH%M') %> à <%= @contrat.jour3fin.strftime('%HH%M') %>. </li> <% end %>
+<% if @contrat.jour4 == true %> <li>- Le <b><%= @contrat.jour4debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour4debut.strftime('%HH%M') %> à <%= @contrat.jour4fin.strftime('%HH%M') %>. </li> <% end %>
+<% if @contrat.jour5 == true %> <li>- Le <b><%= @contrat.jour5debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour5debut.strftime('%HH%M') %> à <%= @contrat.jour5fin.strftime('%HH%M') %>. </li> <% end %>
+<% if @contrat.jour6 == true %> <li>- Le <b><%= @contrat.jour6debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour6debut.strftime('%HH%M') %> à <%= @contrat.jour6fin.strftime('%HH%M') %>. </li> <% end %>
+<% if @contrat.jour7 == true %> <li>- Le <b><%= @contrat.jour7debut.strftime('%d/%m/%Y') %></b>, de  <%= @contrat.jour7debut.strftime('%HH%M') %> à <%= @contrat.jour7fin.strftime('%HH%M') %>. </li> <% end %>
+</ul>
+</div>
+
+<br/>
+<u><h4>ARTICLE <% if @contrat.periodeessai == true %>7<% else %>8 <% end %> : MODIFICATION DE LA REPARTITION DES HORAIRES DE TRAVAIL </h4></u>
+
+<p>La répartition de l'horaire de travail pourra être modifiée, notamment, en cas :
+</p>
+<li>de surcroît temporaire d’activité,</li>
+<li>de prestations à accomplir dans un délai déterminé,</li>
+<li>de réorganisation des horaires collectifs,</li>
+<li>d’absence d’un ou plusieurs salariés pour quelque cause que ce soit,</li>
+<li>d’arrivées ou départs importants de clients non prévus,</li>
+<li>des conditions météorologiques,</li>
+<li>de toute autre circonstance revêtant la nécessité d’une intervention rapide, non prévisible et qui ne peut être différée.</li>
+
+<p>Lorsque surviendra l'une des circonstances autorisant une nouvelle répartition, les conditions de cette modification seront notifiées à <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> sept jours au moins avant la date à laquelle la modification doit prendre effet, ramenés à 3 jours ouvrés en cas de circonstances exceptionnelles, par lettre recommandée avec AR ou par lettre remise en main propre contre décharge.</p>
+
+<br/>
+<u><h4>ARTICLE <% if @contrat.periodeessai == true %>8<% else %>9 <% end %> : CONGES PAYES</h4></u>
+
+<p>En l’état de la nature du contrat ne permettant pas à <b> <%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> de prendre effectivement ses congés, il lui sera versé mensuellement, une indemnité compensatrice de congés payés tel que précisé dans l’article intitulé « rémunération ».
+</p>
+<br/>
+<u><h4>ARTICLE <% if @contrat.periodeessai == true %>9<% else %>10 <% end %> : OBLIGATIONS PROFESSIONNELLES</h4></u>
+<p>En l’état de la nature du contrat ne permettant pas à <b> <%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b>  s'engage à observer les dispositions réglementant les conditions de travail applicables à l’ensemble des salariés de <%= @contrat.user.formejuridique %> <%= @contrat.user.nomentreprise %> ainsi que les règles générales concernant la discipline et la sécurité du travail.</p>
+
+<p>Le salarié s'engage par ailleurs :
+<li>à se conformer aux directives et instructions émanant de la direction ou de son représentant ;
+</li>
+<li>à observer une discrétion professionnelle absolue tant pendant l'exécution qu'après la cessation de son contrat, pour tout ce qui concerne les faits ou informations dont il  aura connaissance dans l'exercice ou à l'occasion de ses fonctions ;</li>
+<li>à observer les horaires de travail qui seront fixés par l'employeur ;
+</li>
+<li>à informer immédiatement l’employeur en cas d’absence quel que soit le motif et à produire dans les 48 heures les justificatifs appropriés ;
+à faire connaître sans délai tout changement concernant sa situation (domicile, situation familiale, enfants à charge….) et autorisation de séjour et de travail sur le territoire français.</li>
+<li>à transmettre dès expiration des précédents, les documents afférents à son autorisation de séjour et de travail sur le territoire français.
+</li></p>
+<% if @contrat.video.present? %>
+
+<p><b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> est informé qu’un système de vidéosurveillance a été mis en place, pour des raisons de sécurité et afin de se prémunir de vols éventuels, à l’extérieur et à l’intérieur de l’établissement.</p>
+<p>Les images enregistrées sont exclusivement destinées à l’employeur et ne donneront pas lieu à constitution d’un fichier nominatif.
+</p>
+<p>Le dispositif installé peut servir à surveiller l’activité du personnel ou toute personne située dans l’enceinte de la société et ses dépendances.
+</p>
+<p>Le salarié reconnaît en conséquence avoir été informé du but de l’installation de ce système et de l’utilisation des données.
+</p>
+<p>Il reconnaît avoirété informé que, conformément à la loi n°78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, modifiée par la loi du 6 août 2004, il dispose d’un droit d’accès et de rectification des données recueillies par le système de vidéosurveillance et d’un droit d’opposition, ainsi que des modalités d’exercice de ce droit.
+</p>
+<% else %>
+<% end %>
+
+<br/>
+<u><h4>ARTICLE <% if @contrat.periodeessai == true %>10<% else %>11 <% end %> : RUPTURE ANTICIPEE DU CONTRAT
+</h4></u>
+<p>Conformément aux dispositions légales actuellement applicables et sous réserve de leur modification, après la période d’essai, le présent contrat ne pourra être résilié avant le terme convenu, sauf accord des parties, qu’en cas de faute grave, lourde, de force majeure, inaptitude constatée par le Médecin du travail ou si <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> peut justifier de la conclusion d’un contrat à durée indéterminée. Dans ce dernier cas, <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> devra respecter un préavis dont la durée sera calculée conformément à l'article L. 1243-2 du Code du travail.
+
+
+</p>
+<p>En dehors de ces hypothèses la rupture anticipée du contrat de travail à durée déterminée qui intervient à l’initiative de <b><%= @contrat.employee.empcivilite %> <%= @contrat.employee.nom.capitalize %> <%= @contrat.employee.prenom %></b> en dehors des cas prévus aux articles L. 1243-1 et L. 1243-2 du Code du travail ouvre droit pour l’employeur à des dommages et intérêts correspondant au préjudice subi.</p>
+
+<br/>
+<u><h4>ARTICLE <% if @contrat.periodeessai == true %>11<% else %>12 <% end %> : RUPTURE ANTICIPEE DU CONTRAT
+</h4></u>
+<p>Le présent contrat n’ouvrira pas droit au bénéfice d’une indemnité de fin de contrat.
+</p>
+
+<div class="partie">Fait à <b><%= @contrat.user.ville %></b><br/>
+                  Le <b> <% if @contrat.updated_at.present?  %> <%= @contrat.updated_at.strftime('%d/%m/%Y') %> <% else %><%= @contrat.created_at.strftime('%d/%m/%Y') %> <% end %>,</b><br/>
+                  En deux exemplaires </div>
+
+
+
+<b> <p>Signatures précédées de la mention « Lu et approuvé ».
+</p>
+<p>Signature du salarié&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160&#160   Signature de l’employeur</p>  </b>
+
+<br/><br/><br/><br/><br/><br/>
+
+</div>
+
+
+</body>
+</html>
