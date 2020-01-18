@@ -83,10 +83,6 @@ GEM
     autoprefixer-rails (7.1.3)
       execjs
     aws_cf_signer (0.1.3)
-    axiom-types (0.1.1)
-      descendants_tracker (~> 0.0.4)
-      ice_nine (~> 0.11.0)
-      thread_safe (~> 0.3, >= 0.3.1)
     bcrypt (3.1.13)
     bindex (0.5.0)
     bootstrap-datepicker-rails (1.7.1.1)
@@ -102,8 +98,6 @@ GEM
       aws_cf_signer
       rest-client
     coderay (1.1.1)
-    coercible (1.0.0)
-      descendants_tracker (~> 0.0.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -112,13 +106,8 @@ GEM
       execjs
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
-    csv-importer (0.7.0)
-      virtus
-    descendants_tracker (0.0.4)
-      thread_safe (~> 0.3, >= 0.3.1)
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
-    equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.7.0)
     ffi (1.9.18)
@@ -136,7 +125,6 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.8.6)
-    ice_nine (0.11.2)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
       multi_json (>= 1.2)
@@ -193,7 +181,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     puma (3.10.0)
-    rack (2.0.3)
+    rack (2.1.1)
     rack-pjax (1.0.0)
       nokogiri (~> 1.5)
       rack (>= 1.1)
@@ -285,11 +273,6 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.4)
-    virtus (1.0.5)
-      axiom-types (~> 0.1)
-      coercible (~> 1.0)
-      descendants_tracker (~> 0.0, >= 0.0.3)
-      equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.7)
       rack (>= 1.0)
     web-console (3.5.1)
@@ -315,7 +298,6 @@ DEPENDENCIES
   bootstrap-toggle-rails
   cloudinary (= 1.1.7)
   coffee-rails
-  csv-importer
   datetimepicker-rails!
   devise!
   figaro
