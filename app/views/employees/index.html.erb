@@ -1,26 +1,43 @@
 
-<div class="table"><br/>
-  <center><%= link_to 'Ajouter un employé', new_employee_path, class: 'btn-medium' %><br/><br/></center>
+<div class="table">
 
+  <b>Import/Export: </b>
   <%= form_tag import_employees_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Importer employés" %>
+  <%= file_field_tag :file %><br/>
+  <%= submit_tag "Importer employés", class: 'btn-medium' %>
   <% end %>
+  <br/>
+  <%= link_to "Exporter employés", employees_path(format: 'csv'), class: 'btn-medium' %>
+  <br/>
+  <p><center><%= link_to 'Ajouter un employé', new_employee_path, class: 'btn-medium' %><br/><br/></center>
+  </p>
 
-   <%= link_to "Exporter employés", employees_path(format: 'csv') %>
+  <table style="width:90vw; margin: auto;">
+    <thead>
+      <td>Nom</td>
+      <td>Prénom</td>
+      <td>Actions</td>
+    </thead>
 
-  <% @employees.each do |emp| %>
-  <div class="table-row">
-    <%= emp.nom %>
-    <%= emp.prenom %>
-    <%= link_to ' Modifier employée', edit_employee_path(emp), class: 'btn btn-medium btn-lg pull-right margin' %>
-    <%= link_to ' Nouveau contrat Exta',  new_employee_contrat_path(emp), class: 'btn btn-medium btn-lg pull-right margin'   %>
-    <%= link_to ' Nouveau contrat CDD Saisonnier',  new_employee_contratcdd_path(emp), class: 'btn btn-medium btn-lg pull-right margin'   %>
-    <%= link_to ' Supprimer employée',  employee_path(emp), method: :delete, class: 'btn btn-medium btn-lg pull-right margin',  data: { confirm: 'Confirmation' }   %>
+    <tbody>
+      <% @employees.each do |emp| %>
 
+      <tr>
+       <td><%= emp.nom %></td>
+       <td><%= emp.prenom %></td>
+       <td>  <%= link_to ' Modifier', edit_employee_path(emp), class:'btn-table'  %>
+         <%= link_to ' Supprimer',  employee_path(emp), method: :delete,   data: { confirm: 'Confirmation' } , class:'btn-table'  %>
+         <%= link_to '
+         Générer contrat',  new_employee_contrat_path(emp), class:'btn-table'   %>
 
-  </div>
-  <% end %>
+       </td>
+     </tr>
+     <% end %>
+   </tbody>
+
+ </table>
+</div>
+
 
 
 </div>
