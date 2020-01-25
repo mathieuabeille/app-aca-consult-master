@@ -34707,3 +34707,846 @@ Sent data Reporte.pdf (5.3ms)
 Completed 200 OK in 3943ms (Views: 4.7ms | ActiveRecord: 3.3ms)
 
 
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "gestion-factures_development"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP DATABASE IF EXISTS "gestion-factures_test"[0m
+  [1m[35m (547.2ms)[0m  [1m[35mCREATE DATABASE "gestion-factures_development" ENCODING = 'unicode'[0m
+  [1m[35m (310.1ms)[0m  [1m[35mCREATE DATABASE "gestion-factures_test" ENCODING = 'unicode'[0m
+  [1m[35m (38.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7348093897707989475);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (16.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20170829104913)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" inet, "last_sign_in_ip" inet, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35mSQL (22.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170829104913"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateInvoices (20170829173105)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "invoices" ("id" serial primary key, "user_id" integer, "entite" character varying, "specifique_id" character varying, "fournisseur" character varying, "marque" character varying, "nom" character varying, "description" character varying, "serial" character varying, "value" float, "duree_garantie" character varying, "emplacement" character varying, "date_achat" date, "fin_amortissement" date, "numero_comptabilite" character varying, "processeur" character varying, "RAM" character varying, "memoire" character varying, "systeme_exploitation" character varying, "numero_OS" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_3d1522a0d8"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE  INDEX  "index_invoices_on_user_id" ON "invoices"  ("user_id")[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170829173105"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAttachinaryTables (20170830162431)
+  [1m[35m (23.6ms)[0m  [1m[35mBEGIN[0m
+DEPRECATION WARNING: Directly inheriting from ActiveRecord::Migration is deprecated. Please specify the Rails release the migration was written for:
+
+  class CreateAttachinaryTables < ActiveRecord::Migration[4.2] (called from <top (required)> at /Users/mathieuabeille/code/mathieuabeille/aca-consult/bin/rake:9)
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "attachinary_files" ("id" serial primary key, "attachinariable_type" character varying, "attachinariable_id" integer, "scope" character varying, "public_id" character varying, "version" character varying, "width" integer, "height" integer, "format" character varying, "resource_type" character varying, "created_at" timestamp, "updated_at" timestamp)[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "by_scoped_parent" ON "attachinary_files"  ("attachinariable_type", "attachinariable_id", "scope")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170830162431"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateReviews (20170831102646)
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (33.3ms)[0m  [1m[35mCREATE TABLE "reviews" ("id" serial primary key, "content" text, "auteur" text, "invoice_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_5c83e61106"
+FOREIGN KEY ("invoice_id")
+  REFERENCES "invoices" ("id")
+)[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_reviews_on_invoice_id" ON "reviews"  ("invoice_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170831102646"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateContrats (20170911123659)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.0ms)[0m  [1m[35mCREATE TABLE "contrats" ("id" serial primary key, "nom" character varying, "prenom" character varying, "adresse" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (26.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170911123659"]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumntoContrats (20170923165705)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "contrats" ADD "startdate" date[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170923165705"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddSocietetoContrats (20170923171923)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "contrats" ADD "societe" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "nsiret" character varying[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "contrats" ADD "cnaf" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "sadresse" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "scposte" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" ADD "sexerepresentant" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "typesociete" character varying[0m
+  [1m[35m (25.9ms)[0m  [1m[35mALTER TABLE "contrats" ADD "nomrepresentant" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "prenomrepresentant" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "posterepresentant" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "numeroaffiliation" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" ADD "regionurssaf" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "adresseurssaf" character varying[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170923171923"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddSocietechampstoContrats (20170923184659)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "sville" character varying[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170923184659"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Addemployee (20170925091756)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" ADD "empcivilite" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "birthplace" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "birthdate" date[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" ADD "nationalite" character varying[0m
+  [1m[35m (25.1ms)[0m  [1m[35mALTER TABLE "contrats" ADD "permissejourexp" date[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "permissejourdate" date[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "permissejournum" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "contrats" ADD "permissejourloc" character varying[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170925091756"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Addnsecu (20170925103710)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "nsecu" character varying[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170925103710"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Addcontratfield (20170926121707)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "datefin" date[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "nomposte" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "dureeprobation" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "probrationfin" date[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "remuneration" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "heures" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour1debut" timestamp[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour2debut" timestamp[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour3debut" timestamp[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour4debut" timestamp[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour5debut" timestamp[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour6debut" timestamp[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour7debut" timestamp[0m
+  [1m[35m (25.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour1fin" timestamp[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour2fin" timestamp[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour3fin" timestamp[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour4fin" timestamp[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour5fin" timestamp[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour6fin" timestamp[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour7fin" timestamp[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170926121707"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Adureefield (20170926130114)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" ADD "dureecontrat" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170926130114"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Addvideo (20170927154315)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "contrats" ADD "video" boolean[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" ADD "periodeessai" boolean[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170927154315"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Addcontractto (20170929145002)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "user_id" integer[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_contrats_on_user_id" ON "contrats"  ("user_id")[0m
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "contrats" ADD CONSTRAINT "fk_rails_6225723fdb"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20170929145002"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Profilentreprise (20171003133748)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "nomentreprise" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "adresseentreprise" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "numerosiret" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "numerocnaf" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "formejuridique" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "sexerepresentant" character varying[0m
+  [1m[35m (12.1ms)[0m  [1m[35mALTER TABLE "users" ADD "nomrepresentant" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "prenomrepresentant" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "fonctionrepresentant" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "numerourssaf" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "regionurssaf" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "adresseurssaf" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "ville" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171003133748"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Addday (20171004135447)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour1" boolean[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour2" boolean[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour3" boolean[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour4" boolean[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour5" boolean[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour6" boolean[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "jour7" boolean[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171004135447"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Removeuselessfields (20171005081021)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (26.3ms)[0m  [1m[35mALTER TABLE "contrats" DROP "societe"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "nsiret"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" DROP "cnaf"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "sadresse"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "scposte"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "sexerepresentant"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" DROP "typesociete"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "prenomrepresentant"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "nomrepresentant"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" DROP "numeroaffiliation"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "regionurssaf"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" DROP "adresseurssaf"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "contrats" DROP "sville"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" DROP "dureeprobation"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" DROP "probrationfin"[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171005081021"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateEmployees (20171009095135)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.5ms)[0m  [1m[35mCREATE TABLE "employees" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (24.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171009095135"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Addemployeetoemployee (20171009095207)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" ADD "employee_id" integer[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_contrats_on_employee_id" ON "contrats"  ("employee_id")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "contrats" ADD CONSTRAINT "fk_rails_2ccfb95a63"
+FOREIGN KEY ("employee_id")
+  REFERENCES "employees" ("id")
+[0m
+  [1m[35m (3.4ms)[0m  [1m[35mALTER TABLE "employees" ADD "empcivilite" character varying[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "employees" ADD "prenom" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "employees" ADD "nom" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "employees" ADD "adresse" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "employees" ADD "datedenaissance" date[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "employees" ADD "lieudenaissance" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "employees" ADD "nationalite" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "employees" ADD "nsecu" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "employees" ADD "permissejournum" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "employees" ADD "permissejourloc" date[0m
+  [1m[35m (25.4ms)[0m  [1m[35mALTER TABLE "employees" ADD "permissejourexp" date[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "employees" ADD "permissejourdate" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171009095207"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Modifypermis (20171009101212)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "employees" DROP "permissejourloc"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "employees" DROP "permissejourdate"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "employees" ADD "permissejourloc" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "employees" ADD "permissejourdate" date[0m
+  [1m[35mSQL (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171009101212"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Salaire (20171009105257)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "contrats" DROP "remuneration"[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contrats" ADD "remuneration" float[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171009105257"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Removeuselessfield (20171010130057)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "contrats" DROP "nom"[0m
+  [1m[35m (26.0ms)[0m  [1m[35mALTER TABLE "contrats" DROP "prenom"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "adresse"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" DROP "startdate"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" DROP "posterepresentant"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" DROP "empcivilite"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" DROP "birthplace"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" DROP "birthdate"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" DROP "nationalite"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "permissejournum"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "permissejourdate"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contrats" DROP "permissejourexp"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "permissejourloc"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contrats" DROP "nsecu"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "datefin"[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contrats" DROP "dureecontrat"[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171010130057"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Contratcdd (20171105132425)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (37.8ms)[0m  [1m[35mCREATE TABLE "contratcdd" ("id" serial primary key, "user_id" integer, "debut" character varying, "fin" character varying, "poste" character varying, "periodeessai" boolean, "video" boolean, "remuneration" character varying, "heurehebdo" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_83f2a66251"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "index_contratcdd_on_user_id" ON "contratcdd"  ("user_id")[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171105132425"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateContratcdds (20171105135228)
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "contratcdds" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171105135228"]]
+  [1m[35m (25.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Contratcdds (20171105143628)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.5ms)[0m  [1m[35mDROP TABLE "contratcdd"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "debut" date[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "fin" date[0m
+  [1m[35m (1.7ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "remuneration" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "poste" character varying[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "heurehebdo" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "video" boolean[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "periodeessai" boolean[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171105143628"]]
+  [1m[35m (3.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Addemployeecdd (20171112160736)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "employee_id" integer[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_contratcdds_on_employee_id" ON "contratcdds"  ("employee_id")[0m
+  [1m[35m (6.4ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD CONSTRAINT "fk_rails_bfc34706e3"
+FOREIGN KEY ("employee_id")
+  REFERENCES "employees" ("id")
+[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171112160736"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Addusercontratcdd (20171112160901)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "user_id" integer[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE  INDEX  "index_contratcdds_on_user_id" ON "contratcdds"  ("user_id")[0m
+  [1m[35m (26.8ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD CONSTRAINT "fk_rails_be0d66bc4b"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171112160901"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Salaireheureinteger (20171126133903)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "contratcdds" DROP "heurehebdo"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contratcdds" DROP "remuneration"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "heurehebdo" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "remuneration" character varying[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171126133903"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Salaireheureinteger2 (20171126140112)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "contratcdds" DROP "heurehebdo"[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "contratcdds" DROP "remuneration"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "heurehebdo" integer[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "contratcdds" ADD "remuneration" integer[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171126140112"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Conventioncollective (20171126144340)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "conventioncollective" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "conventioncollectivetype" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171126144340"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to Retraite (20171203185154)
+  [1m[35m (25.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "users" ADD "caisseretraite" character varying[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "caisseprevoyance" character varying[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171203185154"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.9ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-01-25 09:12:51.727636"], ["updated_at", "2020-01-25 09:12:51.727636"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(7348093897707989475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/" for 127.0.0.1 at 2020-01-25 10:17:00 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (4.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (2104.9ms)
+  Rendered shared/_navbar.html.erb (24.3ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 2296ms (Views: 2293.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-01-25 10:17:08 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.7ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (44.5ms)
+Completed 200 OK in 220ms (Views: 148.4ms | ActiveRecord: 34.9ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-01-25 10:17:19 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (14.8ms)
+  Rendered shared/_navbar.html.erb (4.9ms)
+  Rendered shared/_footer.html.erb (0.9ms)
+Completed 200 OK in 108ms (Views: 106.0ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-01-25 10:17:37 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"2GIG51T2R88/vwSHDYa7Ev/WJ9uk2pXoOv7sJqMMuS+5E6Fq/AmhFbDZ1rVWIrP3i4eq77DngYXn96GxQn30eA==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (21.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (2.2ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (11.8ms)
+  Rendered shared/_navbar.html.erb (2.3ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 626ms (Views: 114.5ms | ActiveRecord: 22.5ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-01-25 10:17:47 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Nz6zpDQk9qgGwMpReZ+bTiMQrUQoNrS+XdARBZYO3eNWTxQpnNsQcommGGMiO5OrV0EgcDwLoNOA2VySd3+QtA==", "user"=>{"email"=>"test@test.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "test@test.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.6ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "test@test.com"], ["encrypted_password", "$2a$11$t2u.JrdUpopuKAYRWT5GNO1H8M/vV6u4UT9VxyspdoVOgCqsKiPBi"], ["created_at", "2020-01-25 09:17:47.215187"], ["updated_at", "2020-01-25 09:17:47.215187"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-01-25 09:17:47.219980"], ["last_sign_in_at", "2020-01-25 09:17:47.219980"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2020-01-25 09:17:47.220857"], ["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 185ms (ActiveRecord: 6.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-25 10:17:47 +0100
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (30.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendered pages/home.html.erb within layouts/application (38.0ms)
+  Rendered shared/_navbar.html.erb (3.0ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 99ms (Views: 67.4ms | ActiveRecord: 30.6ms)
+
+
+Started GET "/employees" for 127.0.0.1 at 2020-01-25 10:17:49 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (5.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.9ms)[0m  [1m[34mSELECT "employees".* FROM "employees"[0m
+  Rendered employees/index.html.erb within layouts/application (5.9ms)
+  Rendered shared/_navbar.html.erb (2.5ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 90ms (Views: 72.2ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-25 10:17:52 +0100
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (55.6ms)
+  Rendered employees/new.html.erb within layouts/application (57.8ms)
+  Rendered shared/_navbar.html.erb (3.9ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 143ms (Views: 118.7ms | ActiveRecord: 7.8ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7348093897707989475);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserToEmployees (20200125093001)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mALTER TABLE "employees" ADD "user_id" integer[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_employees_on_user_id" ON "employees"  ("user_id")[0m
+  [1m[35m (3.6ms)[0m  [1m[35mALTER TABLE "employees" ADD CONSTRAINT "fk_rails_dcfd3d4fc3"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200125093001"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(7348093897707989475)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-25 10:30:53 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.9ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (106.9ms)
+  Rendered employees/new.html.erb within layouts/application (112.3ms)
+  Rendered shared/_navbar.html.erb (5.7ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 1240ms (Views: 1156.8ms | ActiveRecord: 11.5ms)
+
+
+Started POST "/employees" for 127.0.0.1 at 2020-01-25 10:31:02 +0100
+Processing by EmployeesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MuHvLAJbKzBMFIoLgY1WQQNXNXm+B0SQSAAX+4qr6tZTkEihqqTN6sNyWDnaKV6kdwa4Tao6UP2VCVpsa9qngQ==", "employee"=>{"empcivilite"=>"Monsieur", "prenom"=>"wedf", "nom"=>"fdb", "adresse"=>"bdvcx ", "datedenaissance(1i)"=>"1930", "datedenaissance(2i)"=>"1", "datedenaissance(3i)"=>"25", "lieudenaissance"=>" dv cfd", "nationalite"=>"dfbfg", "nsecu"=>"dfbgf", "permissejournum"=>"", "permissejourdate(1i)"=>"2020", "permissejourdate(2i)"=>"1", "permissejourdate(3i)"=>"25", "permissejourexp(1i)"=>"2020", "permissejourexp(2i)"=>"1", "permissejourexp(3i)"=>"25", "permissejourloc"=>""}, "commit"=>"Créer l'employée"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 17ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `employee' for #<User:0x00007f9d1312a108>
+Did you mean?  employees
+               employees=):
+  
+app/controllers/employees_controller.rb:28:in `create'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.1ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.8ms)
+Started GET "/" for 127.0.0.1 at 2020-01-25 10:31:17 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.2ms)
+
+
+  
+NoMethodError (undefined method `employee' for #<User:0x00007f9d0d2a74c8>
+Did you mean?  employees
+               employees=):
+  
+app/controllers/employees_controller.rb:7:in `index'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.6ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (24.7ms)
+Started GET "/" for 127.0.0.1 at 2020-01-25 10:31:48 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.8ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered employees/index.html.erb within layouts/application (20.1ms)
+  Rendered shared/_navbar.html.erb (3.4ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 174ms (Views: 82.5ms | ActiveRecord: 10.9ms)
+
+
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-25 10:31:50 +0100
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (29.2ms)
+  Rendered employees/new.html.erb within layouts/application (31.6ms)
+  Rendered shared/_navbar.html.erb (4.3ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 122ms (Views: 101.7ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/employees" for 127.0.0.1 at 2020-01-25 10:31:57 +0100
+Processing by EmployeesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ovHiBHUMuoRB/zI59wFOH5vfw3wifg58hyQDFiwDcV3DgEWJ3fNcXs6Z4AuspUb6745OSDZDGhFaLU6BzXI8Cg==", "employee"=>{"empcivilite"=>"Monsieur", "prenom"=>"wedfbf", "nom"=>"fdbgf", "adresse"=>"bgfvb", "datedenaissance(1i)"=>"1930", "datedenaissance(2i)"=>"1", "datedenaissance(3i)"=>"25", "lieudenaissance"=>"bgfvc", "nationalite"=>"gdvbgf", "nsecu"=>"dbf", "permissejournum"=>"", "permissejourdate(1i)"=>"2020", "permissejourdate(2i)"=>"1", "permissejourdate(3i)"=>"25", "permissejourexp(1i)"=>"2020", "permissejourexp(2i)"=>"1", "permissejourexp(3i)"=>"25", "permissejourloc"=>""}, "commit"=>"Créer l'employée"}
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 4.8ms)
+
+
+  
+NoMethodError (undefined method `employee' for #<User:0x00007f9d0ecc5918>
+Did you mean?  employees
+               employees=):
+  
+app/controllers/employees_controller.rb:28:in `create'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.3ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (35.4ms)
+Started GET "/" for 127.0.0.1 at 2020-01-25 10:32:05 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered employees/index.html.erb within layouts/application (2.6ms)
+  Rendered shared/_navbar.html.erb (4.8ms)
+  Rendered shared/_footer.html.erb (1.1ms)
+Completed 200 OK in 86ms (Views: 78.7ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-25 10:34:17 +0100
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (18.8ms)
+  Rendered employees/new.html.erb within layouts/application (21.6ms)
+  Rendered shared/_navbar.html.erb (7.2ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 163ms (Views: 94.5ms | ActiveRecord: 16.3ms)
+
+
+Started POST "/employees" for 127.0.0.1 at 2020-01-25 10:34:24 +0100
+Processing by EmployeesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RDQZPFXtAyhq4mB3rO0KpBfYLHjryWJT9iiJOllHlsslRb6x/RLl8uWEskX3SQJBY4mhTP/0dj4rIcStuDbbnA==", "employee"=>{"empcivilite"=>"Monsieur", "prenom"=>"gerg", "nom"=>"dfgbgr", "adresse"=>"gfb", "datedenaissance(1i)"=>"1930", "datedenaissance(2i)"=>"1", "datedenaissance(3i)"=>"25", "lieudenaissance"=>"fgd", "nationalite"=>"gbd", "nsecu"=>"gf", "permissejournum"=>"", "permissejourdate(1i)"=>"2020", "permissejourdate(2i)"=>"1", "permissejourdate(3i)"=>"25", "permissejourexp(1i)"=>"2020", "permissejourexp(2i)"=>"1", "permissejourexp(3i)"=>"25", "permissejourloc"=>""}, "commit"=>"Créer l'employée"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.7ms)[0m  [1m[32mINSERT INTO "employees" ("created_at", "updated_at", "empcivilite", "prenom", "nom", "adresse", "datedenaissance", "lieudenaissance", "nationalite", "nsecu", "permissejournum", "permissejourexp", "permissejourloc", "permissejourdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["created_at", "2020-01-25 09:34:24.855496"], ["updated_at", "2020-01-25 09:34:24.855496"], ["empcivilite", "Monsieur"], ["prenom", "gerg"], ["nom", "dfgbgr"], ["adresse", "gfb"], ["datedenaissance", "1930-01-25"], ["lieudenaissance", "fgd"], ["nationalite", "gbd"], ["nsecu", "gf"], ["permissejournum", ""], ["permissejourexp", "2020-01-25"], ["permissejourloc", ""], ["permissejourdate", "2020-01-25"]]
+  [1m[35m (7.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/employees
+Completed 302 Found in 25ms (ActiveRecord: 11.8ms)
+
+
+Started GET "/employees" for 127.0.0.1 at 2020-01-25 10:34:24 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered employees/index.html.erb within layouts/application (3.7ms)
+  Rendered shared/_navbar.html.erb (2.7ms)
+  Rendered shared/_footer.html.erb (1.2ms)
+Completed 200 OK in 107ms (Views: 99.8ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-25 10:34:30 +0100
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (17.7ms)
+  Rendered employees/new.html.erb within layouts/application (19.0ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 90ms (Views: 86.6ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/employees" for 127.0.0.1 at 2020-01-25 10:34:37 +0100
+Processing by EmployeesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"6fV3g77wnpifVnVt38fWo3SIWIvOoWqJSEDNxcZcajCIhNAOFg94QhAwp1+EY95GANnVv9qcfuSVSYBSJy0nZw==", "employee"=>{"empcivilite"=>"Monsieur", "prenom"=>"efvr", "nom"=>"efbrg", "adresse"=>"egbd", "datedenaissance(1i)"=>"1930", "datedenaissance(2i)"=>"1", "datedenaissance(3i)"=>"25", "lieudenaissance"=>"bgr", "nationalite"=>"rgdb", "nsecu"=>"grfdb", "permissejournum"=>"", "permissejourdate(1i)"=>"2020", "permissejourdate(2i)"=>"1", "permissejourdate(3i)"=>"25", "permissejourexp(1i)"=>"2020", "permissejourexp(2i)"=>"1", "permissejourexp(3i)"=>"25", "permissejourloc"=>""}, "commit"=>"Créer l'employée"}
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "employees" ("created_at", "updated_at", "empcivilite", "prenom", "nom", "adresse", "datedenaissance", "lieudenaissance", "nationalite", "nsecu", "permissejournum", "permissejourexp", "permissejourloc", "permissejourdate") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14) RETURNING "id"[0m  [["created_at", "2020-01-25 09:34:37.943593"], ["updated_at", "2020-01-25 09:34:37.943593"], ["empcivilite", "Monsieur"], ["prenom", "efvr"], ["nom", "efbrg"], ["adresse", "egbd"], ["datedenaissance", "1930-01-25"], ["lieudenaissance", "bgr"], ["nationalite", "rgdb"], ["nsecu", "grfdb"], ["permissejournum", ""], ["permissejourexp", "2020-01-25"], ["permissejourloc", ""], ["permissejourdate", "2020-01-25"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/employees
+Completed 302 Found in 14ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/employees" for 127.0.0.1 at 2020-01-25 10:34:37 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered employees/index.html.erb within layouts/application (3.6ms)
+  Rendered shared/_navbar.html.erb (2.5ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 88ms (Views: 77.2ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/employees" for 127.0.0.1 at 2020-01-25 10:36:20 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered employees/index.html.erb within layouts/application (6.6ms)
+  Rendered shared/_navbar.html.erb (2.5ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 93ms (Views: 54.8ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-25 10:36:21 +0100
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.6ms)
+
+
+  
+NoMethodError (undefined method `employee' for #<User:0x00007f9d0ed4eba0>
+Did you mean?  employees
+               employees=):
+  
+app/controllers/employees_controller.rb:17:in `new'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.1ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (50.9ms)
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-25 10:36:43 +0100
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 703ms (ActiveRecord: 5.2ms)
+
+
+  
+NameError (undefined local variable or method `employee' for #<EmployeesController:0x00007f9d138926c0>
+Did you mean?  employee_url):
+  
+app/controllers/employees_controller.rb:17:in `new'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.0ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (255.9ms)
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-25 10:36:53 +0100
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (19.1ms)
+  Rendered employees/new.html.erb within layouts/application (20.4ms)
+  Rendered shared/_navbar.html.erb (2.7ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 141ms (Views: 84.5ms | ActiveRecord: 7.8ms)
+
+
+Started POST "/employees" for 127.0.0.1 at 2020-01-25 10:37:00 +0100
+Processing by EmployeesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+i+hnNbeNIFcbLyE6r7gcg+K2Ur91qDZkHePsZKo0tqbXgYRfiHSW9MKbraxGuiXe9tUfunrtLRNfsImc9mfjQ==", "employee"=>{"empcivilite"=>"Monsieur", "prenom"=>"grfb", "nom"=>"gdfbfg", "adresse"=>"gdbf", "datedenaissance(1i)"=>"1930", "datedenaissance(2i)"=>"1", "datedenaissance(3i)"=>"25", "lieudenaissance"=>"gfb", "nationalite"=>"bggf", "nsecu"=>"gfb", "permissejournum"=>"", "permissejourdate(1i)"=>"2020", "permissejourdate(2i)"=>"1", "permissejourdate(3i)"=>"25", "permissejourexp(1i)"=>"2020", "permissejourexp(2i)"=>"1", "permissejourexp(3i)"=>"25", "permissejourloc"=>""}, "commit"=>"Créer l'employée"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.7ms)
+
+
+  
+NoMethodError (undefined method `employee' for #<User:0x00007f9d0d54e050>
+Did you mean?  employees
+               employees=):
+  
+app/controllers/employees_controller.rb:28:in `create'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.9ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (26.5ms)
+Started POST "/employees" for 127.0.0.1 at 2020-01-25 10:37:22 +0100
+Processing by EmployeesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+i+hnNbeNIFcbLyE6r7gcg+K2Ur91qDZkHePsZKo0tqbXgYRfiHSW9MKbraxGuiXe9tUfunrtLRNfsImc9mfjQ==", "employee"=>{"empcivilite"=>"Monsieur", "prenom"=>"grfb", "nom"=>"gdfbfg", "adresse"=>"gdbf", "datedenaissance(1i)"=>"1930", "datedenaissance(2i)"=>"1", "datedenaissance(3i)"=>"25", "lieudenaissance"=>"gfb", "nationalite"=>"bggf", "nsecu"=>"gfb", "permissejournum"=>"", "permissejourdate(1i)"=>"2020", "permissejourdate(2i)"=>"1", "permissejourdate(3i)"=>"25", "permissejourexp(1i)"=>"2020", "permissejourexp(2i)"=>"1", "permissejourexp(3i)"=>"25", "permissejourloc"=>""}, "commit"=>"Créer l'employée"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "employees" ("created_at", "updated_at", "empcivilite", "prenom", "nom", "adresse", "datedenaissance", "lieudenaissance", "nationalite", "nsecu", "permissejournum", "permissejourexp", "permissejourloc", "permissejourdate", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["created_at", "2020-01-25 09:37:22.267320"], ["updated_at", "2020-01-25 09:37:22.267320"], ["empcivilite", "Monsieur"], ["prenom", "grfb"], ["nom", "gdfbfg"], ["adresse", "gdbf"], ["datedenaissance", "1930-01-25"], ["lieudenaissance", "gfb"], ["nationalite", "bggf"], ["nsecu", "gfb"], ["permissejournum", ""], ["permissejourexp", "2020-01-25"], ["permissejourloc", ""], ["permissejourdate", "2020-01-25"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/employees
+Completed 302 Found in 83ms (ActiveRecord: 10.0ms)
+
+
+Started GET "/employees" for 127.0.0.1 at 2020-01-25 10:37:22 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered employees/index.html.erb within layouts/application (4.4ms)
+  Rendered shared/_navbar.html.erb (6.0ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 100ms (Views: 95.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-25 10:37:25 +0100
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (19.9ms)
+  Rendered employees/new.html.erb within layouts/application (21.2ms)
+  Rendered shared/_navbar.html.erb (3.3ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 97ms (Views: 90.3ms | ActiveRecord: 3.0ms)
+
+
+Started POST "/employees" for 127.0.0.1 at 2020-01-25 10:37:31 +0100
+Processing by EmployeesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KEQImO3PrGkayZ+FM/GC+DXLbJ0pnKiu+TrhaDoZdHtJNa8VRTBKs5WvTbdoVYodQZrhqT2hvMMkM6z/22g5LA==", "employee"=>{"empcivilite"=>"Monsieur", "prenom"=>"dfbfg", "nom"=>"bvgrf", "adresse"=>"gdfbfg", "datedenaissance(1i)"=>"1930", "datedenaissance(2i)"=>"1", "datedenaissance(3i)"=>"25", "lieudenaissance"=>"fgb", "nationalite"=>"dbfg", "nsecu"=>"gfb ", "permissejournum"=>"", "permissejourdate(1i)"=>"2020", "permissejourdate(2i)"=>"1", "permissejourdate(3i)"=>"25", "permissejourexp(1i)"=>"2020", "permissejourexp(2i)"=>"1", "permissejourexp(3i)"=>"25", "permissejourloc"=>""}, "commit"=>"Créer l'employée"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (2.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  [1m[32mINSERT INTO "employees" ("created_at", "updated_at", "empcivilite", "prenom", "nom", "adresse", "datedenaissance", "lieudenaissance", "nationalite", "nsecu", "permissejournum", "permissejourexp", "permissejourloc", "permissejourdate", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["created_at", "2020-01-25 09:37:31.577091"], ["updated_at", "2020-01-25 09:37:31.577091"], ["empcivilite", "Monsieur"], ["prenom", "dfbfg"], ["nom", "bvgrf"], ["adresse", "gdfbfg"], ["datedenaissance", "1930-01-25"], ["lieudenaissance", "fgb"], ["nationalite", "dbfg"], ["nsecu", "gfb "], ["permissejournum", ""], ["permissejourexp", "2020-01-25"], ["permissejourloc", ""], ["permissejourdate", "2020-01-25"], ["user_id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/employees
+Completed 302 Found in 16ms (ActiveRecord: 4.9ms)
+
+
+Started GET "/employees" for 127.0.0.1 at 2020-01-25 10:37:31 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered employees/index.html.erb within layouts/application (4.8ms)
+  Rendered shared/_navbar.html.erb (2.4ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 103ms (Views: 94.8ms | ActiveRecord: 2.0ms)
+
+
+Started DELETE "/employees/4" for 127.0.0.1 at 2020-01-25 10:37:35 +0100
+Processing by EmployeesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fnWo+F5+Q3ErC/WpZHTk/PbPcS7Vcxp7fAs1Ek9sl/gfBA919oGlq6RtJ5s/0OwZgp78GsFODhahAniFrh3arw==", "id"=>"4"}
+  [1m[36mUser Load (5.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.8ms)[0m  [1m[31mDELETE FROM "employees" WHERE "employees"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/employees
+Completed 302 Found in 16ms (ActiveRecord: 8.6ms)
+
+
+Started GET "/employees" for 127.0.0.1 at 2020-01-25 10:37:35 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 1]]
+  Rendered employees/index.html.erb within layouts/application (8.5ms)
+  Rendered shared/_navbar.html.erb (3.7ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 174ms (Views: 168.3ms | ActiveRecord: 2.1ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2020-01-25 10:38:28 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"7dQTQ2YOyTEfGlBuf5oAYK+InKr8SfNPtOPir1tcUASMpbTOzvEv65B8glwkPgiF29kRnuh05yJp6q84ui0dUw=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 36ms (ActiveRecord: 4.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-25 10:38:28 +0100
+Processing by EmployeesController#index as HTML
+Completed 401 Unauthorized in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-01-25 10:38:28 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.5ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (28.1ms)
+Completed 200 OK in 167ms (Views: 162.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-01-25 10:38:30 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (3.5ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (30.7ms)
+  Rendered shared/_navbar.html.erb (6.5ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 198ms (Views: 194.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-01-25 10:38:49 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VO+SG9EnFX/qH8tShbzKOQTToEvijRzDl8FTBcfiObfS20ppOlLY/R42kIzA4hN8ZuEE9Py8uXDLx+S/YD+6UA==", "user"=>{"email"=>"bdgrf@frefgbgr.fr", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "bdgrf@frefgbgr.fr"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "bdgrf@frefgbgr.fr"], ["encrypted_password", "$2a$11$FSy5CDUJkIXlKqVvQQS9qOhF7FgDdDV.eK74Ia84VMPRjy6dkUuIm"], ["created_at", "2020-01-25 09:38:50.277105"], ["updated_at", "2020-01-25 09:38:50.277105"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-01-25 09:38:50.280155"], ["last_sign_in_at", "2020-01-25 09:38:50.280155"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2020-01-25 09:38:50.281042"], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 318ms (ActiveRecord: 5.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-25 10:38:50 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 2]]
+  Rendered employees/index.html.erb within layouts/application (8.1ms)
+  Rendered shared/_navbar.html.erb (2.7ms)
+  Rendered shared/_footer.html.erb (1.2ms)
+Completed 200 OK in 79ms (Views: 67.3ms | ActiveRecord: 3.6ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2020-01-25 10:38:53 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"udFjqygWOSpRVfwrtBoA2Y1Em20dlUv12i7v9SG2Bik/5bvZw2P0qKV8p/XxRNmc73Y/0gOk7kaGKFhPhmuFzg=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-25 10:38:53 +0100
+Processing by EmployeesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-01-25 10:38:53 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.3ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (13.7ms)
+Completed 200 OK in 115ms (Views: 113.6ms | ActiveRecord: 0.0ms)
+
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171203185154) do
+ActiveRecord::Schema.define(version: 20200125093001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -96,6 +96,8 @@ ActiveRecord::Schema.define(version: 20171203185154) do
     t.date     "permissejourexp"
     t.string   "permissejourloc"
     t.date     "permissejourdate"
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_employees_on_user_id", using: :btree
   end
 
   create_table "invoices", force: :cascade do |t|
@@ -170,6 +172,7 @@ ActiveRecord::Schema.define(version: 20171203185154) do
   add_foreign_key "contratcdds", "users"
   add_foreign_key "contrats", "employees"
   add_foreign_key "contrats", "users"
+  add_foreign_key "employees", "users"
   add_foreign_key "invoices", "users"
   add_foreign_key "reviews", "invoices"
 end
