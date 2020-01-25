@@ -1,6 +1,13 @@
 
 <div class="table"><br/>
-<center><%= link_to 'Ajouter un employé', new_employee_path, class: 'btn-medium' %><br/><br/></center>
+  <center><%= link_to 'Ajouter un employé', new_employee_path, class: 'btn-medium' %><br/><br/></center>
+
+  <%= form_tag import_employees_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Importer employés" %>
+  <% end %>
+
+   <%= link_to "Exporter employés", employees_path(format: 'csv') %>
 
   <% @employees.each do |emp| %>
   <div class="table-row">
@@ -12,7 +19,7 @@
     <%= link_to ' Supprimer employée',  employee_path(emp), method: :delete, class: 'btn btn-medium btn-lg pull-right margin',  data: { confirm: 'Confirmation' }   %>
 
 
-</div>
+  </div>
   <% end %>
 
 

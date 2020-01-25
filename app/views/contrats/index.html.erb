@@ -1,6 +1,6 @@
 
 <div class="table"><br/>
-<center><%= link_to 'Ajouter un employé', new_employee_path, class: 'btn-medium' %><br/><br/></center>
+  <center><%= link_to 'Ajouter un employé', new_employee_path, class: 'btn-medium' %><br/><br/></center>
 
   <% @contrats.each do |contrat| %>
   <div class="table-row">
@@ -9,7 +9,7 @@
     <%= link_to ' Dernier contrat', contrat_path(contrat, format: 'pdf'), class: 'btn btn-medium btn-lg pull-right margin' %>
     <%= link_to ' Supprimer', contrat_path(contrat), method: :delete, class: 'btn btn-medium btn-lg pull-right margin' %>
 
-</div>
+  </div>
   <% end %>
 
 

@@ -1,10 +1,16 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
+  require 'csv'
 
   # GET /employees
   # GET /employees.json
   def index
     @employees = current_user.employees
+
+    respond_to do |format|
+      format.html
+      format.csv { render text: @employees.to_csv }
+    end
   end
 
   # GET /employees/1
@@ -50,6 +56,11 @@ class EmployeesController < ApplicationController
         format.json { render json: @employee.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def import
+    Employee.import(params[:file])
+    redirect_to root_url, notice: "Import réussi"
   end
 
   # DELETE /employees/1
