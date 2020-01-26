@@ -1,16 +1,60 @@
 
 <div class="table">
 
-  <b>Import/Export: </b>
-  <%= form_tag import_employees_path, multipart: true do %>
-  <%= file_field_tag :file %><br/>
-  <%= submit_tag "Importer employés", class: 'btn-medium' %>
-  <% end %>
-  <br/>
-  <%= link_to "Exporter employés", employees_path(format: 'csv'), class: 'btn-medium' %>
-  <br/>
-  <p><center><%= link_to 'Ajouter un employé', new_employee_path, class: 'btn-medium' %><br/><br/></center>
-  </p>
+
+
+  <!-- Button trigger modal -->
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Import Export CSV</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <center>
+        <div class="modal-body">
+          <%= form_tag import_employees_path, multipart: true do %>
+          <span class="btn btn-large btn-warning">
+            Choisir un CSV
+            <%= file_field_tag :file %>
+          </span>
+
+
+
+
+
+          <%= submit_tag "Envoyer", class: 'btn btn-large btn-warning btn-file' %>
+          <% end %>
+          <br/>
+          <%= link_to "Exporter la base employé", employees_path(format: 'csv'), class: 'btn btn-large btn-warning btn-file' %>
+        </div></center>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <center><%= link_to 'Ajouter un employé', new_employee_path, class: 'btn btn-large btn-warning btn-file' %> <button type="button" class="btn btn btn-large btn-warning" data-toggle="modal" data-target="#exampleModalCenter">
+    Import/Export CSV
+  </button><br/><br/>
+  </center>
+
+
 
   <table style="width:90vw; margin: auto;">
     <thead>

@@ -36920,3 +36920,552 @@ Processing by EmployeesController#index as HTML
 Completed 200 OK in 135ms (Views: 128.6ms | ActiveRecord: 1.5ms)
 
 
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:27:14 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (22.3ms)
+  Rendered shared/_navbar.html.erb (6.0ms)
+  Rendered shared/_footer.html.erb (3.4ms)
+Completed 200 OK in 215ms (Views: 170.2ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:29:36 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.5ms)
+  Rendered shared/_navbar.html.erb (3.8ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 4341ms (Views: 4336.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:30:07 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.3ms)
+  Rendered shared/_navbar.html.erb (18.6ms)
+  Rendered shared/_footer.html.erb (1.8ms)
+Completed 200 OK in 267ms (Views: 262.1ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:30:24 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.9ms)
+  Rendered shared/_navbar.html.erb (2.3ms)
+  Rendered shared/_footer.html.erb (0.7ms)
+Completed 200 OK in 73ms (Views: 66.2ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:30:54 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (3.6ms)
+  Rendered shared/_navbar.html.erb (2.7ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 75ms (Views: 71.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:31:39 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (6.1ms)
+  Rendered shared/_navbar.html.erb (1.9ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 64ms (Views: 59.5ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:32:37 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (3.7ms)
+  Rendered shared/_navbar.html.erb (2.2ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 72ms (Views: 66.5ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:33:34 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.7ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (5.4ms)
+  Rendered shared/_navbar.html.erb (1.9ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 65ms (Views: 61.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:34:24 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (5.0ms)
+  Rendered shared/_navbar.html.erb (2.3ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 71ms (Views: 66.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:34:47 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (5.4ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 81ms (Views: 76.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:37:03 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (5.9ms)
+  Rendered shared/_navbar.html.erb (1.9ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 67ms (Views: 63.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:37:31 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.3ms)
+  Rendered shared/_navbar.html.erb (2.3ms)
+  Rendered shared/_footer.html.erb (1.0ms)
+Completed 200 OK in 113ms (Views: 103.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:39:43 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (3.5ms)
+  Rendered shared/_navbar.html.erb (3.4ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 62ms (Views: 57.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:39:47 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (3.3ms)
+  Rendered shared/_navbar.html.erb (4.1ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 85ms (Views: 78.6ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:40:26 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (5.8ms)
+  Rendered shared/_navbar.html.erb (2.2ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 70ms (Views: 66.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:41:54 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.7ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 71ms (Views: 65.9ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:42:02 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.4ms)
+  Rendered shared/_navbar.html.erb (4.1ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 84ms (Views: 79.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:42:06 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.9ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 74ms (Views: 70.1ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:44:18 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (5.5ms)
+  Rendered shared/_navbar.html.erb (5.0ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 4073ms (Views: 4067.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:44:50 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (3.9ms)
+  Rendered shared/_navbar.html.erb (4.5ms)
+  Rendered shared/_footer.html.erb (1.0ms)
+Completed 200 OK in 4012ms (Views: 4007.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:46:48 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.9ms)
+  Rendered shared/_navbar.html.erb (4.6ms)
+  Rendered shared/_footer.html.erb (0.9ms)
+Completed 200 OK in 3955ms (Views: 3947.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:47:52 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (5.2ms)
+  Rendered shared/_navbar.html.erb (4.0ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 4437ms (Views: 4431.8ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:50:57 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.1ms)
+  Rendered shared/_navbar.html.erb (2.2ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 68ms (Views: 63.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:51:16 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.9ms)
+  Rendered shared/_navbar.html.erb (6.9ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 88ms (Views: 81.8ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:51:20 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (5.7ms)
+  Rendered shared/_navbar.html.erb (3.4ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 75ms (Views: 70.7ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:51:50 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (5.3ms)
+  Rendered shared/_navbar.html.erb (2.3ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 79ms (Views: 74.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:52:15 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (1.7ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (7.5ms)
+  Rendered shared/_navbar.html.erb (8.4ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 100ms (Views: 92.3ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:52:55 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (4.3ms)
+  Rendered shared/_navbar.html.erb (2.3ms)
+  Rendered shared/_footer.html.erb (1.4ms)
+Completed 200 OK in 91ms (Views: 86.5ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:53:39 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 3]]
+  Rendered employees/index.html.erb within layouts/application (3.4ms)
+  Rendered shared/_navbar.html.erb (3.7ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 170ms (Views: 166.6ms | ActiveRecord: 0.7ms)
+
+
+Started DELETE "/users/sign_out" for 127.0.0.1 at 2020-01-26 11:54:10 +0100
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"jp/XJ0Kh3yU7VwpJixv5RCgiHZSlwQJzfcGwvWj9Ololga0UP04tuVxXMjctfKP/Vbbs9pJDsgcNyYFJEagJPg=="}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 8ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:54:10 +0100
+Processing by EmployeesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-01-26 11:54:10 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.4ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.8ms)
+Completed 200 OK in 88ms (Views: 85.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:54:28 +0100
+Processing by EmployeesController#index as HTML
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2020-01-26 11:54:28 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.2ms)
+  Rendered devise/sessions/new.html.erb within layouts/application (20.2ms)
+Completed 200 OK in 115ms (Views: 113.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-01-26 11:54:30 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (9.0ms)
+  Rendered shared/_navbar.html.erb (2.4ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 76ms (Views: 75.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_up" for 127.0.0.1 at 2020-01-26 11:54:37 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (1.1ms)
+  Rendered devise/registrations/new.html.erb within layouts/application (10.9ms)
+  Rendered shared/_navbar.html.erb (4.1ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 84ms (Views: 83.1ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2020-01-26 11:54:57 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"RRGqsfvxcULqO0wMHkFihrXeXJUXEUfY0Yis6YUtbKMrc6NirwNpvtiTLo8TUcRMkfOGSR+LJN1Q8NfUatRIdw==", "user"=>{"email"=>"mathieu.abeille@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "mathieu.abeille@gmail.com"], ["LIMIT", 1]]
+  [1m[35mSQL (1.8ms)[0m  [1m[32mINSERT INTO "users" ("email", "encrypted_password", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["email", "mathieu.abeille@gmail.com"], ["encrypted_password", "$2a$11$Rfs81dFVAJGvBb5IKX4kfunULIOb1kgEQ8cvU5SMemMbeITfVy0Ae"], ["created_at", "2020-01-26 10:54:57.726707"], ["updated_at", "2020-01-26 10:54:57.726707"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  [1m[33mUPDATE "users" SET "sign_in_count" = $1, "current_sign_in_at" = $2, "last_sign_in_at" = $3, "current_sign_in_ip" = $4, "last_sign_in_ip" = $5, "updated_at" = $6 WHERE "users"."id" = $7[0m  [["sign_in_count", 1], ["current_sign_in_at", "2020-01-26 10:54:57.732205"], ["last_sign_in_at", "2020-01-26 10:54:57.732205"], ["current_sign_in_ip", "127.0.0.1/32"], ["last_sign_in_ip", "127.0.0.1/32"], ["updated_at", "2020-01-26 10:54:57.733186"], ["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 191ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:54:57 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.2ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered employees/index.html.erb within layouts/application (3.2ms)
+  Rendered shared/_navbar.html.erb (6.0ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 73ms (Views: 69.2ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/employees/import" for 127.0.0.1 at 2020-01-26 11:55:05 +0100
+Processing by EmployeesController#import as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"I7dnjROUzNc1eDYrj3Zjc1RrIxAqVmWJAOu6ZNC5GxZN1W5eR2bUKwfQVKiCZsW5cEb5zCLMBoyBk8FZP0A/wg==", "file"=>#<ActionDispatch::Http::UploadedFile:0x00007f9d193a3140 @tempfile=#<Tempfile:/var/folders/mt/zv93rfsx5g34mzd1667fvb900000gn/T/RackMultipart20200126-66675-12xsmx6.csv>, @original_filename="employees.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"employees.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"Envoyer"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "employees" SET "updated_at" = $1 WHERE "employees"."id" = $2[0m  [["updated_at", "2020-01-25 10:10:14"], ["id", 5]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" IS NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.6ms)[0m  [1m[32mINSERT INTO "employees" ("created_at", "updated_at", "empcivilite", "prenom", "nom", "adresse", "datedenaissance", "lieudenaissance", "nationalite", "nsecu", "permissejournum", "permissejourexp", "permissejourloc", "permissejourdate", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["created_at", "2020-01-25 10:10:14"], ["updated_at", "2020-01-25 10:10:14"], ["empcivilite", "Monsieur"], ["prenom", "Mathieu"], ["nom", "Abeille"], ["adresse", "dhb"], ["datedenaissance", "1930-01-25"], ["lieudenaissance", "brf"], ["nationalite", "gfb"], ["nsecu", "fbg"], ["permissejournum", ""], ["permissejourexp", "2020-01-25"], ["permissejourloc", ""], ["permissejourdate", "2020-01-25"], ["user_id", 3]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 28ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:55:05 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered employees/index.html.erb within layouts/application (7.1ms)
+  Rendered shared/_navbar.html.erb (3.7ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 111ms (Views: 105.5ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/employees/import" for 127.0.0.1 at 2020-01-26 11:55:17 +0100
+Processing by EmployeesController#import as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jMjDWtiQwL8SYRyz7JPsrHyotTcGPFIp2KX8WUppa1biqsqJjGLYQyDJfjDhg0pmWIVv6w6mMSxZ3YdkpZBPgg==", "file"=>#<ActionDispatch::Http::UploadedFile:0x00007f9d0d5e9d70 @tempfile=#<Tempfile:/var/folders/mt/zv93rfsx5g34mzd1667fvb900000gn/T/RackMultipart20200126-66675-lscz11.csv>, @original_filename="employees.csv", @content_type="text/csv", @headers="Content-Disposition: form-data; name=\"file\"; filename=\"employees.csv\"\r\nContent-Type: text/csv\r\n">, "commit"=>"Envoyer"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mEmployee Load (0.7ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" IS NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "employees" ("created_at", "updated_at", "empcivilite", "prenom", "nom", "adresse", "datedenaissance", "lieudenaissance", "nationalite", "nsecu", "permissejournum", "permissejourexp", "permissejourloc", "permissejourdate", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["created_at", "2020-01-25 10:10:14"], ["updated_at", "2020-01-25 10:10:14"], ["empcivilite", "Monsieur"], ["prenom", "Mathieu"], ["nom", "Abeille"], ["adresse", "dhb"], ["datedenaissance", "1930-01-25"], ["lieudenaissance", "brf"], ["nationalite", "gfb"], ["nsecu", "fbg"], ["permissejournum", ""], ["permissejourexp", "2020-01-25"], ["permissejourloc", ""], ["permissejourdate", "2020-01-25"], ["user_id", 3]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 15ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/" for 127.0.0.1 at 2020-01-26 11:55:17 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered employees/index.html.erb within layouts/application (7.8ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 126ms (Views: 121.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/employees.csv" for 127.0.0.1 at 2020-01-26 11:55:25 +0100
+Processing by EmployeesController#index as CSV
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 4]]
+DEPRECATION WARNING: `render :text` is deprecated because it does not actually render a `text/plain` response. Switch to `render plain: 'plain text'` to render as `text/plain`, `render html: '<strong>HTML</strong>'` to render as `text/html`, or `render body: 'raw'` to match the deprecated behavior and render with the default Content-Type, which is `text/html`. (called from render_with_remotipart at /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16)
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 11ms (Views: 2.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/employees/new" for 127.0.0.1 at 2020-01-26 11:56:40 +0100
+Processing by EmployeesController#new as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering employees/new.html.erb within layouts/application
+  Rendered employees/_form.html.erb (38.2ms)
+  Rendered employees/new.html.erb within layouts/application (40.7ms)
+  Rendered shared/_navbar.html.erb (4.6ms)
+  Rendered shared/_footer.html.erb (0.6ms)
+Completed 200 OK in 157ms (Views: 151.5ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/employees" for 127.0.0.1 at 2020-01-26 11:57:26 +0100
+Processing by EmployeesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"qofD+czjVzNx0mTA8627Kte1hlW8VqyD1uNv/ttw1LXE5coqmBFPz0N6BkP+vR3g85hcibTMz4ZXmxTDNInwYQ==", "employee"=>{"empcivilite"=>"Monsieur", "prenom"=>"Mathieu", "nom"=>"Abeille", "adresse"=>"26 rue lamblardie 75012 Paris", "datedenaissance(1i)"=>"1991", "datedenaissance(2i)"=>"11", "datedenaissance(3i)"=>"9", "lieudenaissance"=>"Marseille", "nationalite"=>"France", "nsecu"=>"191111325325", "permissejournum"=>"", "permissejourdate(1i)"=>"2020", "permissejourdate(2i)"=>"1", "permissejourdate(3i)"=>"26", "permissejourexp(1i)"=>"2020", "permissejourexp(2i)"=>"1", "permissejourexp(3i)"=>"26", "permissejourloc"=>""}, "commit"=>"Créer l'employée"}
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "employees" ("created_at", "updated_at", "empcivilite", "prenom", "nom", "adresse", "datedenaissance", "lieudenaissance", "nationalite", "nsecu", "permissejournum", "permissejourexp", "permissejourloc", "permissejourdate", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["created_at", "2020-01-26 10:57:26.691658"], ["updated_at", "2020-01-26 10:57:26.691658"], ["empcivilite", "Monsieur"], ["prenom", "Mathieu"], ["nom", "Abeille"], ["adresse", "26 rue lamblardie 75012 Paris"], ["datedenaissance", "1991-11-09"], ["lieudenaissance", "Marseille"], ["nationalite", "France"], ["nsecu", "191111325325"], ["permissejournum", ""], ["permissejourexp", "2020-01-26"], ["permissejourloc", ""], ["permissejourdate", "2020-01-26"], ["user_id", 4]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/employees
+Completed 302 Found in 18ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/employees" for 127.0.0.1 at 2020-01-26 11:57:26 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (1.0ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered employees/index.html.erb within layouts/application (7.8ms)
+  Rendered shared/_navbar.html.erb (3.8ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 105ms (Views: 97.9ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/employees/9/contrats/new" for 127.0.0.1 at 2020-01-26 11:57:45 +0100
+Processing by ContratsController#new as HTML
+  Parameters: {"employee_id"=>"9"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering contrats/new.html.erb within layouts/application
+  Rendered contrats/_form.html.erb (28.3ms)
+  Rendered contrats/new.html.erb within layouts/application (30.4ms)
+Completed 200 OK in 268ms (Views: 219.0ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/employees/9/contrats" for 127.0.0.1 at 2020-01-26 11:58:34 +0100
+Processing by ContratsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hadF53IZYUsLfcyYp+SM3sNd/CrM9QEVPtvwLps1k6/rxUw0Jut5tznVrhuq9CoU53Am9sRvYhC/o4sTdMy3ew==", "contrat"=>{"remuneration"=>"12", "nomposte"=>"Serveur", "jour1"=>"true", "jour1debut"=>"04/02/2020 10:00", "jour1fin"=>"04/02/2020 19:00", "jour2"=>"false", "jour2debut"=>"", "jour2fin"=>"", "jour3"=>"false", "jour3debut"=>"", "jour3fin"=>"", "jour4"=>"false", "jour4debut"=>"", "jour4fin"=>"", "jour5"=>"false", "jour5debut"=>"", "jour5fin"=>"", "jour6"=>"false", "jour6debut"=>"", "jour6fin"=>"", "jour7"=>"false", "jour7debut"=>"", "jour7fin"=>"", "video"=>"false", "periodeessai"=>"false"}, "commit"=>"Créer le contrat", "employee_id"=>"9"}
+  [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.4ms)[0m  [1m[32mINSERT INTO "contrats" ("created_at", "updated_at", "nomposte", "jour1debut", "jour1fin", "video", "periodeessai", "jour1", "jour2", "jour3", "jour4", "jour5", "jour6", "jour7", "employee_id", "remuneration") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING "id"[0m  [["created_at", "2020-01-26 10:58:34.863836"], ["updated_at", "2020-01-26 10:58:34.863836"], ["nomposte", "Serveur"], ["jour1debut", "2020-02-04 10:00:00"], ["jour1fin", "2020-02-04 19:00:00"], ["video", "f"], ["periodeessai", "f"], ["jour1", "t"], ["jour2", "f"], ["jour3", "f"], ["jour4", "f"], ["jour5", "f"], ["jour6", "f"], ["jour7", "f"], ["employee_id", 9], ["remuneration", 12.0]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/contrats/1
+Completed 302 Found in 22ms (ActiveRecord: 5.8ms)
+
+
+Started GET "/contrats/1" for 127.0.0.1 at 2020-01-26 11:58:34 +0100
+Processing by ContratsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mContrat Load (2.2ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" WHERE "contrats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" WHERE "contrats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering contrats/show.html.erb within layouts/application
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered contrats/show.html.erb within layouts/application (5.6ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 74ms (Views: 61.9ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/contrats/1.pdf" for 127.0.0.1 at 2020-01-26 11:58:44 +0100
+Processing by ContratsController#show as PDF
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mContrat Load (0.5ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" WHERE "contrats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" WHERE "contrats"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+***************WICKED***************
+  Rendering contrats/reporte.pdf.erb
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendered contrats/reporte.pdf.erb (24.2ms)
+  Rendering text template
+  Rendered text template (0.0ms)
+Sent data Reporte.pdf (1.2ms)
+Completed 200 OK in 5603ms (Views: 0.7ms | ActiveRecord: 4.7ms)
+
+
