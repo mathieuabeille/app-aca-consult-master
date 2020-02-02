@@ -8,8 +8,8 @@ RailsAdmin.config do |config|
   # end
   # config.current_user_method(&:current_user)
 
-  ## == Cancan ==
-  # config.authorize_with :cancan
+  ## == CancanCan ==
+  # config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
@@ -38,70 +38,4 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
-
-
-
-
-
-  config.model 'User' do
-  label 'Les entreprises' # Change the label of this model class
-
-  field :nomentreprise do
-    label "Nom de l'entreprise" # Change the label of this field
-  end
-    field :adresseentreprise do
-    label "Adresse complète de l'entreprise" # Change the label of this field
-  end
-  field :numerosiret do
-    label "Numero Siret de l'entreprises" # Change the label of this field
-  end
-   field :numerocnaf do
-    label "Numéro Cnaf" # Change the label of this field
-  end
-  field :formejuridique do
-    label "Type de société (Sarl, SA, etc...)" # Change the label of this field
-  end
-  field :sexerepresentant do
-    label "Sexe du representant (Masculin ou Féminin)" # Change the label of this field
-  end
-   field :nomrepresentant do
-    label "Nom du representant" # Change the label of this field
-  end
-    field :prenomrepresentant do
-    label "Prénom du representant" # Change the label of this field
-  end
-      field :fonctionrepresentant do
-    label "Fonction du representant" # Change the label of this field
-  end
-        field :numerourssaf do
-    label "Numéro Urssaf" # Change the label of this field
-  end
-
-          field :adresseurssaf do
-    label "Adresse complète de l'urssaf" # Change the label of this field
-  end
-
-            field :ville do
-    label "Ville ou est signée le contrat de travail" # Change the label of this field
-  end
-            field :conventioncollective do
-    label "conventioncollective" # Change the label of this field
-  end
-              field :conventioncollectivetype do
-    label "type de convention collective" # Change the label of this field
-  end
-
-              field :caisseretraite do
-    label "caisse de retraite" # Change the label of this field
-  end
-
-                field :caisseprevoyance do
-    label "Caisse de prévoyance" # Change the label of this field
-  end
-
-
-end
-
-
-
 end

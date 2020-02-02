@@ -37469,3 +37469,1735 @@ Sent data Reporte.pdf (1.2ms)
 Completed 200 OK in 5603ms (Views: 0.7ms | ActiveRecord: 4.7ms)
 
 
+Started GET "/" for 127.0.0.1 at 2020-02-02 20:20:46 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (5.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (5.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (4.1ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered employees/index.html.erb within layouts/application (72.0ms)
+  Rendered shared/_navbar.html.erb (35.7ms)
+  Rendered shared/_footer.html.erb (0.8ms)
+Completed 200 OK in 2039ms (Views: 1920.3ms | ActiveRecord: 24.9ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2020-02-02 20:20:54 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (0.6ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (3.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (0.4ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (3.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.3ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (31.2ms)
+Completed 500 Internal Server Error in 1063ms (ActiveRecord: 28.8ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118489121340'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118489121340'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+actionpack (5.0.5) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:188:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.0.5) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.5) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.5ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (46.0ms)
+Started GET "/admink" for 127.0.0.1 at 2020-02-02 20:21:07 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"model_name"=>"k"}
+  [1m[35m (3.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (0.8ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (0.4ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (1.1ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.6ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (10.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (23.6ms)
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 23.2ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118541631040'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118541631040'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+rails_admin (1.2.0) app/controllers/rails_admin/application_controller.rb:76:in `block in <class:ApplicationController>'
+activesupport (5.0.5) lib/active_support/rescuable.rb:113:in `instance_exec'
+activesupport (5.0.5) lib/active_support/rescuable.rb:113:in `block in handler_for_rescue'
+activesupport (5.0.5) lib/active_support/rescuable.rb:91:in `rescue_with_handler'
+activesupport (5.0.5) lib/active_support/rescuable.rb:164:in `rescue_with_handler'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:23:in `rescue in process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.5ms)
+Started GET "/adminkl" for 127.0.0.1 at 2020-02-02 20:21:12 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"model_name"=>"kl"}
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (1.5ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (0.4ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.6ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (7.0ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (31.8ms)
+Completed 500 Internal Server Error in 102ms (ActiveRecord: 23.0ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118494467880'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118494467880'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+rails_admin (1.2.0) app/controllers/rails_admin/application_controller.rb:76:in `block in <class:ApplicationController>'
+activesupport (5.0.5) lib/active_support/rescuable.rb:113:in `instance_exec'
+activesupport (5.0.5) lib/active_support/rescuable.rb:113:in `block in handler_for_rescue'
+activesupport (5.0.5) lib/active_support/rescuable.rb:91:in `rescue_with_handler'
+activesupport (5.0.5) lib/active_support/rescuable.rb:164:in `rescue_with_handler'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:23:in `rescue in process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.8ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (26.1ms)
+Started GET "/admin/test" for 127.0.0.1 at 2020-02-02 20:21:54 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"model_name"=>"test"}
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (0.8ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (0.9ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.8ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.4ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (33.7ms)
+Completed 500 Internal Server Error in 99ms (ActiveRecord: 7.6ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118492344400'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118492344400'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+rails_admin (1.2.0) app/controllers/rails_admin/application_controller.rb:76:in `block in <class:ApplicationController>'
+activesupport (5.0.5) lib/active_support/rescuable.rb:113:in `instance_exec'
+activesupport (5.0.5) lib/active_support/rescuable.rb:113:in `block in handler_for_rescue'
+activesupport (5.0.5) lib/active_support/rescuable.rb:91:in `rescue_with_handler'
+activesupport (5.0.5) lib/active_support/rescuable.rb:164:in `rescue_with_handler'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:23:in `rescue in process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.3ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (40.1ms)
+Started GET "/admin" for 127.0.0.1 at 2020-02-02 20:21:59 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (1.2ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (2.2ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.4ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (2.0ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (29.0ms)
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 12.2ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118539476340'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118539476340'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+actionpack (5.0.5) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:188:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.0.5) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.5) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.7ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.9ms)
+Started GET "/" for 127.0.0.1 at 2020-02-02 20:26:50 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (1.3ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered employees/index.html.erb within layouts/application (9.6ms)
+  Rendered shared/_navbar.html.erb (4.5ms)
+  Rendered shared/_footer.html.erb (0.9ms)
+Completed 200 OK in 132ms (Views: 120.2ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/employees/9/edit" for 127.0.0.1 at 2020-02-02 20:26:57 +0100
+Processing by EmployeesController#edit as HTML
+  Parameters: {"id"=>"9"}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mEmployee Load (1.0ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" WHERE "employees"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  Rendering employees/edit.html.erb within layouts/application
+  Rendered employees/_form.html.erb (58.0ms)
+  Rendered employees/edit.html.erb within layouts/application (59.9ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+  Rendered shared/_footer.html.erb (0.5ms)
+Completed 200 OK in 134ms (Views: 123.9ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2020-02-02 20:27:04 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (0.6ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (0.4ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.3ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.4ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (13.0ms)
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 4.4ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118538944740'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118538944740'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+actionpack (5.0.5) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:188:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.0.5) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.5) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (6.3ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (34.9ms)
+Started GET "/admin" for 127.0.0.1 at 2020-02-02 20:32:05 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (0.7ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (1.7ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.7ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.6ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (26.9ms)
+Completed 500 Internal Server Error in 62ms (ActiveRecord: 8.7ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118493443520'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118493443520'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+actionpack (5.0.5) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:188:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.0.5) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.5) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.3ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (40.8ms)
+Started GET "/admin" for 127.0.0.1 at 2020-02-02 20:33:17 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (0.3ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (0.6ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.4ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (31.1ms)
+Completed 500 Internal Server Error in 68ms (ActiveRecord: 8.3ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118540499260'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118540499260'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+actionpack (5.0.5) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:188:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.0.5) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.5) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.6ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (62.8ms)
+Started GET "/admin" for 127.0.0.1 at 2020-02-02 20:33:35 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (1.1ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (1.6ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.6ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.7ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (21.0ms)
+Completed 500 Internal Server Error in 54ms (ActiveRecord: 8.3ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118542811700'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118542811700'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+actionpack (5.0.5) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:188:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.0.5) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.5) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.8ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (28.2ms)
+Started GET "/admin" for 127.0.0.1 at 2020-02-02 20:34:07 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (0.9ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (0.4ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.4ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.4ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.3ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-1.2.0/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (24.2ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 5.8ms)
+
+
+  
+ActionView::Template::Error (uninitialized constant ActionView::CompiledTemplates::EXPR_ARG):
+    11:         - if authorized? :index, abstract_model
+    12:           - index_path = index_path(model_name: abstract_model.to_param)
+    13:           - row_class = "#{cycle("odd", "even")}#{" link" if index_path} #{abstract_model.param_key}_links"
+    14:           %tr{class: row_class, :"data-link" => index_path}
+    15:             - last_created = @most_recent_created[abstract_model.model.name]
+    16:             - active = last_created.try(:today?)
+    17:             %td
+  
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:14:in `block in ___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118540676660'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `each'
+rails_admin (1.2.0) app/views/rails_admin/main/dashboard.html.haml:10:in `___sers_mathieuabeille__rbenv_versions_______lib_ruby_gems_______gems_rails_admin_______app_views_rails_admin_main_dashboard_html_haml__435289002984633017_70118540676660'
+actionview (5.0.5) lib/action_view/template.rb:159:in `block in render'
+activesupport (5.0.5) lib/active_support/notifications.rb:166:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:354:in `instrument'
+actionview (5.0.5) lib/action_view/template.rb:157:in `render'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/template_renderer.rb:14:in `render'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:42:in `render_template'
+actionview (5.0.5) lib/action_view/renderer/renderer.rb:23:in `render'
+actionview (5.0.5) lib/action_view/rendering.rb:104:in `_render_template'
+actionpack (5.0.5) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+actionview (5.0.5) lib/action_view/rendering.rb:83:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+actionpack (5.0.5) lib/action_controller/metal/renderers.rb:142:in `render_to_body'
+actionpack (5.0.5) lib/abstract_controller/rendering.rb:26:in `render'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:36:in `render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/2.6.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.5) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:43:in `render'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:42:in `render_with_wicked_pdf'
+wicked_pdf (1.1.0) lib/wicked_pdf/pdf_helper.rb:27:in `render'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/render_overrides.rb:16:in `render_with_remotipart'
+rails_admin (1.2.0) lib/rails_admin/config/actions/dashboard.rb:33:in `block (2 levels) in <class:Dashboard>'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `instance_eval'
+rails_admin (1.2.0) app/controllers/rails_admin/main_controller.rb:22:in `dashboard'
+actionpack (5.0.5) lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:188:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+activesupport (5.0.5) lib/active_support/callbacks.rb:126:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+activesupport (5.0.5) lib/active_support/callbacks.rb:455:in `call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.5) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.5) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.5) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.5) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.5) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.5) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.5) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.5) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.5) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+railties (5.0.5) lib/rails/railtie.rb:193:in `public_send'
+railties (5.0.5) lib/rails/railtie.rb:193:in `method_missing'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:17:in `block in <class:Constraints>'
+actionpack (5.0.5) lib/action_dispatch/routing/mapper.rb:46:in `serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.5) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.5) lib/action_dispatch/routing/route_set.rb:727:in `call'
+rack-pjax (1.0.0) lib/rack/pjax.rb:12:in `call'
+/Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/bundler/gems/remotipart-cd653ddc43bb/lib/remotipart/middleware.rb:32:in `call'
+warden (1.2.7) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.7) lib/warden/manager.rb:35:in `catch'
+warden (1.2.7) lib/warden/manager.rb:35:in `call'
+rack (2.0.3) lib/rack/etag.rb:25:in `call'
+rack (2.0.3) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.3) lib/rack/head.rb:12:in `call'
+rack (2.0.3) lib/rack/session/abstract/id.rb:232:in `context'
+rack (2.0.3) lib/rack/session/abstract/id.rb:226:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.5) lib/active_record/migration.rb:553:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.5) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.5) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.5) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.5) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.5) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.5) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.0.5) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.0) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.5) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.5) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (5.1ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/actionpack-5.0.5/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (29.6ms)
+Started GET "/admin" for 127.0.0.1 at 2020-02-02 20:35:23 +0100
+  [1m[36mActiveRecord::SchemaMigration Load (0.8ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (1.4ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (1.4ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.3ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.5ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (72.8ms)
+Started GET "/" for 127.0.0.1 at 2020-02-02 20:35:46 +0100
+Processing by EmployeesController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  Rendering employees/index.html.erb within layouts/application
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."user_id" = $1[0m  [["user_id", 4]]
+  Rendered employees/index.html.erb within layouts/application (60.4ms)
+  Rendered shared/_navbar.html.erb (4.4ms)
+  Rendered shared/_footer.html.erb (0.4ms)
+Completed 200 OK in 248ms (Views: 186.1ms | ActiveRecord: 4.3ms)
+
+
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/_head.html.haml (21920.5ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/_secondary_navigation.html.haml (9.5ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/_navigation.html.haml (27.6ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (16.0ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/pjax.html.haml
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/pjax.html.haml (10.8ms)
+Completed 200 OK in 23803ms (Views: 22106.3ms | ActiveRecord: 44.9ms)
+
+
+Started GET "/admin" for 127.0.0.1 at 2020-02-02 20:35:53 +0100
+Processing by RailsAdmin::MainController#dashboard as HTML
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "contrats"[0m
+  [1m[36mContrat Load (1.0ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY "contrats"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "contratcdds"[0m
+  [1m[36mContratcdd Load (2.1ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY "contratcdds"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "employees"[0m
+  [1m[36mEmployee Load (0.6ms)[0m  [1m[34mSELECT  "employees".* FROM "employees" ORDER BY "employees"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "invoices"[0m
+  [1m[36mInvoice Load (0.5ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY "invoices"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "reviews"[0m
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY "reviews"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (3.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/dashboard.html.haml within layouts/rails_admin/application (46.7ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/_head.html.haml (154.1ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/_secondary_navigation.html.haml (4.1ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/_navigation.html.haml (17.4ms)
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/_sidebar_navigation.html.haml (8.6ms)
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/pjax.html.haml
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/layouts/rails_admin/pjax.html.haml (9.5ms)
+Completed 200 OK in 299ms (Views: 260.6ms | ActiveRecord: 12.7ms)
+
+
+Started GET "/admin/contratcdd?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2020-02-02 20:36:06 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"contratcdd"}
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mContratcdd Load (1.2ms)[0m  [1m[34mSELECT  "contratcdds".* FROM "contratcdds" ORDER BY contratcdds.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (224.6ms)
+Completed 200 OK in 283ms (Views: 243.5ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/admin/contrat?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2020-02-02 20:36:09 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"contrat"}
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mContrat Load (0.5ms)[0m  [1m[34mSELECT  "contrats".* FROM "contrats" ORDER BY contrats.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mEmployee Load (0.5ms)[0m  [1m[34mSELECT "employees".* FROM "employees" WHERE "employees"."id" = 9[0m
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (99.5ms)
+Completed 200 OK in 132ms (Views: 110.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/invoice?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2020-02-02 20:36:12 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"invoice"}
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mInvoice Load (1.0ms)[0m  [1m[34mSELECT  "invoices".* FROM "invoices" ORDER BY invoices.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (66.4ms)
+Completed 200 OK in 118ms (Views: 77.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/admin/review?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2020-02-02 20:36:13 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"review"}
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mReview Load (0.4ms)[0m  [1m[34mSELECT  "reviews".* FROM "reviews" ORDER BY reviews.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (40.2ms)
+Completed 200 OK in 130ms (Views: 49.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/admin/user?_pjax=%5Bdata-pjax-container%5D" for 127.0.0.1 at 2020-02-02 20:36:14 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"_pjax"=>"[data-pjax-container]", "model_name"=>"user"}
+  Rendering /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY users.id desc LIMIT $1 OFFSET $2[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  Rendered /Users/mathieuabeille/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/rails_admin-2.0.1/app/views/rails_admin/main/index.html.haml within layouts/rails_admin/pjax (80.0ms)
+Completed 200 OK in 118ms (Views: 91.5ms | ActiveRecord: 1.1ms)
+
+
